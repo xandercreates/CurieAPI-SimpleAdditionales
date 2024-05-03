@@ -27,6 +27,8 @@ public class MonstrocityEntity extends AnimalEntity {
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
 
+    public final AnimationState walkAnimationState = new AnimationState();
+
     @Override
     protected void updateLimbs(float posDelta) {
         float f = this.getPose() == EntityPose.STANDING ? Math.min(posDelta*6.0f, 1.0f): 0.0f;
@@ -65,11 +67,23 @@ public class MonstrocityEntity extends AnimalEntity {
     }
 
     private void updateAnimation() {
-        if (this.idleAnimationTimeout <= 0 ) {
+        if (this.idleAnimationTimeout <= 0 && this.getVelocity().horizontalLengthSquared() <= 0) {
             this.idleAnimationTimeout = this.random.nextInt(40) + 80;
             this.idleAnimationState.start(this.age);
         } else {
             --this.idleAnimationTimeout;
+        }
+
+        if (this.getVelocity().horizontalLengthSquared() > 0)
+        {
+            this.idleAnimationTimeout = 0;
+            this.idleAnimationState.stop();
+            if (!this.walkAnimationState.isRunning())
+            {
+                this.walkAnimationState.start(this.age);
+            }
+        } else {
+            this.walkAnimationState.stop();
         }
     }
     @Override
