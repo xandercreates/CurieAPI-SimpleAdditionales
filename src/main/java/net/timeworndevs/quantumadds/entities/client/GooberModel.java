@@ -139,9 +139,11 @@ public class GooberModel<T extends MonstrocityEntity> extends SinglePartEntityMo
 	public void setAngles(T entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
 		this.getPart().traverse().forEach(ModelPart::resetTransform);
 
-		this.animateMovement(ModAnimations.WALK, limbAngle,limbDistance,1f,1f);
 		//AnimationHelper.animate(this, ModAnimations.WALK, (long)(limbAngle), Math.min(limbDistance, 1f), new Vector3f());
+		float speedScale = (float) entity.getVelocity().horizontalLength() / 0.026375f;
+		speedScale = MathHelper.clamp(speedScale, 0.0f, 2.0f);
 		this.updateAnimation(entity.idleAnimationState, ModAnimations.IDLE, animationProgress, 1f);
+		this.updateAnimation(entity.walkAnimationState, ModAnimations.WALK, animationProgress, speedScale);
 	}
 	private void setHeadAngles(float headYaw, float headPitch) {
 		headYaw = MathHelper.clamp(headYaw, -30.0F, 30.0F);
