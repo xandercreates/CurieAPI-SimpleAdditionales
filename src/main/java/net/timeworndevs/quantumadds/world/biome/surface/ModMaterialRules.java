@@ -9,8 +9,8 @@ import net.minecraft.world.gen.surfacebuilder.MaterialRules;
 public class ModMaterialRules {
     private static final MaterialRules.MaterialRule DIRT = makeStateRule(Blocks.DIRT);
     private static final MaterialRules.MaterialRule GRASS_BLOCK = makeStateRule(Blocks.GRASS_BLOCK);
-    private static final MaterialRules.MaterialRule NUCLEAR_WASTE = makeStateRule(ModBlocks.NUCLEAR_WASTE);
-    private static final MaterialRules.MaterialRule RAW_X = makeStateRule(ModBlocks.METEORITE_ROCK); // - X is a placeholder dw im not implementing twitter ore
+    private static final MaterialRules.MaterialRule RAW_X = makeStateRule(ModBlocks.NUCLEAR_WASTE);
+    private static final MaterialRules.MaterialRule METEORITE = makeStateRule(ModBlocks.METEORITE_ROCK); // - X is a placeholder dw im not implementing twitter ore
 
     public static MaterialRules.MaterialRule makeRules() {
         MaterialRules.MaterialCondition isAtOrAboveWaterLevel = MaterialRules.water(-1, 0);
@@ -20,7 +20,7 @@ public class ModMaterialRules {
         return MaterialRules.sequence(
                 MaterialRules.sequence(MaterialRules.condition(MaterialRules.biome(ModBiomes.RADIATION_TEST),
                                 MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, RAW_X)),
-                        MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, NUCLEAR_WASTE)),
+                        MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, METEORITE)),
 
                 // Default to a grass and dirt surface
                 MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, grassSurface)

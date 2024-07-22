@@ -26,11 +26,11 @@ public class ModMessages {
             }
         }
     }
-    public static final Identifier ALPHA_SYNC_ID = new Identifier(Quantum.MOD_ID, "radiation_alpha_sync");
+    public static final Identifier ALPHA_SYNC_ID = new Identifier("quantum", "radiation_alpha_sync");
 
-    public static final Identifier BETA_SYNC_ID = new Identifier(Quantum.MOD_ID, "radiation_beta_sync");
+    public static final Identifier BETA_SYNC_ID = new Identifier("quantum", "radiation_beta_sync");
 
-    public static final Identifier GAMMA_SYNC_ID = new Identifier(Quantum.MOD_ID, "radiation_gamma_sync");
+    public static final Identifier GAMMA_SYNC_ID = new Identifier("quantum", "radiation_gamma_sync");
 
     public static HashMap<Identifier, NewSyncPackage> NEW_RADIATIONS_SYNC_ID = new HashMap<>();
 

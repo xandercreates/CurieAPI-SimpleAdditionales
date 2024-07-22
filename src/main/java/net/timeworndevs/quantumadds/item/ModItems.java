@@ -1,7 +1,10 @@
 package net.timeworndevs.quantumadds.item;
 
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.registry.RegistryKey;
+import net.timeworndevs.quantumadds.effect.ModEffects;
 import net.timeworndevs.quantumadds.item.GeigerCounter.GeigerCounter;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
@@ -14,6 +17,10 @@ import net.minecraft.util.Rarity;
 
 
 public class ModItems {
+
+    public static final Item RED_PILL = registerItem("red_pill", new Item(new FabricItemSettings().food(ModFood.SUSPICIOUS_PILL)));
+    public static final Item BLUE_PILL = registerItem("blue_pill", new Item(new FabricItemSettings().food(ModFood.MEDICAL_PILL)));
+
 
     public static final Item GEIGER_COUNTER = registerItem("geiger_counter", new GeigerCounter(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)));
 
@@ -101,6 +108,9 @@ public class ModItems {
         entries.add(HAZMATA_CHESTPLATE);
         entries.add(HAZMATA_LEGGINGS);
         entries.add(HAZMATA_BOOTS);
+
+        entries.add(RED_PILL);
+        entries.add(BLUE_PILL);
     }
     private static void quantumEntries(FabricItemGroupEntries entries) {
 
@@ -108,6 +118,7 @@ public class ModItems {
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(Quantum.MOD_ID, name), item);
     }
+
     public static void registerItems() {
         ItemGroupEvents.modifyEntriesEvent(RegistryKey.of(Registries.ITEM_GROUP.getKey(), new Identifier(Quantum.MOD_ID, "radiation"))).register(ModItems::radiationEntries);
         ItemGroupEvents.modifyEntriesEvent(RegistryKey.of(Registries.ITEM_GROUP.getKey(), new Identifier(Quantum.MOD_ID, "quantum"))).register(ModItems::quantumEntries);

@@ -13,6 +13,7 @@ import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+import net.timeworndevs.quantumadds.entities.ModEntities;
 
 public class ModBiomes {
     public static RegistryKey<Biome> RADIATION_TEST = RegistryKey.of(RegistryKeys.BIOME,
@@ -32,9 +33,10 @@ public class ModBiomes {
 
     public static Biome testBiome(Registerable<Biome> context) {
         SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
-        //spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(ModEntities.Entanglics, 2, 3, 5)); // Entanglics, OverDimensional? Si Yo have mant ideas
+        spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(ModEntities.MONSTROCITY, 2, 5, 15)); //kraby w grach
+        // Entanglics, OverDimensional? Si Yo have mant ideas
 
-        spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.WOLF, 5, 4, 4));
+        spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.ZOMBIE, 5, 1, 4));
 
         //DefaultBiomeFeatures.addFarmAnimals(spawnBuilder); we don't want em here
         DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);

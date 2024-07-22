@@ -2,9 +2,9 @@
   "itemGroup.quantumadds.radiation": "Radiation",
   "itemGroup.quantumadds.quantum": "Quantum",
   "itemGroup.quantumadds.building_blocks": "Building Blocks",
-  "quantumadds:item.geiger_counter": "Geiger Counter",
-  "quantumadds:block.meteorite_rock": "Meteorite Rock",
-  "quantumadds:block.nuclear_waste": "Nuclear Waste",
+  "item.quantumadds.geiger_counter": "Geiger Counter",
+  "block.quantumadds.meteorite_rock": "Meteorite Rock",
+  "block.quantumadds.nuclear_waste": "Nuclear Waste",
 
 
   "item.quantumadds.hazmatd_helmet": "Hazmat Helmet - D",
@@ -28,5 +28,9 @@
   "item.quantumadds.hazmata_boots": "Hazmat Boots - A",
 
 
-  "effect.quantumadds.skin_falloff": "Skin Fall Off"
+  "effect.quantumadds.skin_falloff": "Skin Fall Off",
+  "effect.quantumadds.exposed_organs": "Exposed Organs",
+  "effect.quantumadds.radiation_neutralisation": "Radiation Neutralisation",
+  "item.quantumadds.red_pill": "Suspicious Pill",
+  "item.quantumadds.blue_pill": "Medical Pill"
 }

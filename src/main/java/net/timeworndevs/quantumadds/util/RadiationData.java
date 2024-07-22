@@ -59,7 +59,7 @@ public class RadiationData {
         }
         for (String i: Quantum.new_radiation_types.keySet()) {
             if (kind.equals(i)) {
-                ServerPlayNetworking.send(player, new Identifier(Quantum.MOD_ID,"radiation_" + i+"_sync"), buffer);
+                ServerPlayNetworking.send(player, new Identifier("quantum","radiation_" + i+"_sync"), buffer);
             }
         }
     }

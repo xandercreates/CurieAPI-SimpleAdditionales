@@ -56,19 +56,19 @@ public class Quantum implements ModInitializer {
 
     public static final ItemGroup RADIATION = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ModItems.GEIGER_COUNTER))
-            .displayName(Text.translatable("itemGroup.quantum.radiation"))
+            .displayName(Text.translatable("itemGroup.quantumadds.radiation"))
             .entries((context, entries) -> {
             })
             .build();
     public static final ItemGroup BUILD_BLOCKS = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ModBlocks.NUCLEAR_WASTE))
-            .displayName(Text.translatable("itemGroup.quantum.building_blocks"))
+            .displayName(Text.translatable("itemGroup.quantumadds.building_blocks"))
             .entries((context, entries) -> {
             })
             .build();
     public static final ItemGroup QUANTUM = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ModBlocks.NUCLEAR_WASTE))
-            .displayName(Text.translatable("itemGroup.quantum.quantum"))
+            .displayName(Text.translatable("itemGroup.quantumadds.quantum"))
             .entries((context, entries) -> {
             })
             .build();
@@ -130,7 +130,7 @@ public class Quantum implements ModInitializer {
         }
 
         for (String i: new_radiation_types.keySet()) {
-            ModMessages.NEW_RADIATIONS_SYNC_ID.put(new Identifier(Quantum.MOD_ID, "radiation_"+i+"_sync"), new ModMessages.NewSyncPackage(i));
+            ModMessages.NEW_RADIATIONS_SYNC_ID.put(new Identifier("radiation", "radiation_"+i+"_sync"), new ModMessages.NewSyncPackage(i));
 
         }
         
@@ -141,13 +141,13 @@ public class Quantum implements ModInitializer {
         // However, some things (like resources) may still be uninitialized.
         // Proceed with mild caution.
         LOGGER.info("Computing wave-functions...");
+        ModEffects.registerEffects();
         ModBlocks.registerBlocks();
         ModBlocks.registerBlockItems();
         ModEntities.registerModEntities();
         ModItems.registerItems();
         LOGGER.info("Analyzing external dimensions...");
         ServerTickEvents.START_SERVER_TICK.register(new PlayerTickHandler());
-        ModEffects.registerEffects();
         //ModRecipes.registerRecipes();
         LOGGER.info("Testing radiation...");
         Registry.register(Registries.ITEM_GROUP, new Identifier(MOD_ID, "radiation"), RADIATION);

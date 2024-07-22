@@ -26,10 +26,8 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick {
         if (tick >= 20) {
             for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
                 int cur_alpha = ((IEntityDataSaver) player).getPersistentData().getInt("radiation.alpha");
-                int cur_beta = ((IEntityDataSaver) player).getPersistentData().getInt("beta");
-                int cur_gamma = ((IEntityDataSaver) player).getPersistentData().getInt("gamma");
-                int cur_neutron = ((IEntityDataSaver) player).getPersistentData().getInt("neutron");
-                Quantum.LOGGER.info(String.valueOf(cur_alpha));
+                int cur_beta = ((IEntityDataSaver) player).getPersistentData().getInt("radiation.beta");
+                int cur_gamma = ((IEntityDataSaver) player).getPersistentData().getInt("radiation.gamma");
 
                 if (cur_alpha>9000) {
                     if (Math.random()<0.98) {
@@ -132,7 +130,9 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick {
     List<Mutation> mutations = new ArrayList<>(List.of(
             player -> player.setGlowing(true),
             player -> player.setAbsorptionAmount(3f),
-            player -> player.setNoGravity(true)
+            player -> player.setNoGravity(true),
+            player -> player.setBodyYaw(2f),
+            player -> player.setHeadYaw(45f)
             ));
     private void addMutation(ServerPlayerEntity player) {
 

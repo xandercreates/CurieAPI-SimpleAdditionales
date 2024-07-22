@@ -91,9 +91,15 @@
     "axolotls": [],
     "creature": [
       {
-        "type": "minecraft:wolf",
+        "type": "quantumadds:monstrocity",
+        "maxCount": 15,
+        "minCount": 5,
+        "weight": 2
+      },
+      {
+        "type": "minecraft:zombie",
         "maxCount": 4,
-        "minCount": 4,
+        "minCount": 1,
         "weight": 5
       }
     ],

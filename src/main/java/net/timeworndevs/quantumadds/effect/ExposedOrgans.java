@@ -1,16 +1,19 @@
 package net.timeworndevs.quantumadds.effect;
 
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSources;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
-import net.minecraft.registry.DynamicRegistryManager;
+import net.minecraft.entity.player.PlayerEntity;
+import net.timeworndevs.quantumadds.Quantum;
+import net.timeworndevs.quantumadds.util.IEntityDataSaver;
+import net.timeworndevs.quantumadds.util.RadiationData;
 
-public class SkinFalloffEffect extends StatusEffect {
+public class ExposedOrgans extends StatusEffect {
 
-    public SkinFalloffEffect(StatusEffectCategory category, int color) {
+    protected ExposedOrgans(StatusEffectCategory category, int color) {
         super(category, color);
     }
+
 
     @Override
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
@@ -20,9 +23,8 @@ public class SkinFalloffEffect extends StatusEffect {
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         if (!entity.getWorld().isClient()) {
-
-            if (entity.isUsingItem() && Math.random()<0.02) {
-                entity.stopUsingItem();
+            if (entity.isPlayer()) {
+                RadiationData.addRad((IEntityDataSaver) entity, new String[]{"alpha", "beta", "gamma", "neutron", "proton"}[(int) (Math.random()*5-0.01)], (int) (Math.random()*10*amplifier));
             }
         }
         super.applyUpdateEffect(entity, amplifier);

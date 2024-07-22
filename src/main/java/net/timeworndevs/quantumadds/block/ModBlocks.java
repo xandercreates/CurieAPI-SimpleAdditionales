@@ -32,8 +32,7 @@ public class ModBlocks {
 
     public static final Block NUCLEAR_WASTE = registerBlock("nuclear_waste", new Block(FabricBlockSettings.create().strength(4.0f)));
 
-    public static final Block DEAD_SOIL = registerBlock("dead_soil", new Block(FabricBlockSettings.create().strength(4.0f)));
-
+    public static final Block REACTOR_CORE = registerBlock("reactor_core", new ReactorCore(FabricBlockSettings.create().strength(8f).nonOpaque().luminance(4)));
 
     public static Item registerBlockItem(String name, Block block) {
         return Registry.register(Registries.ITEM, new Identifier(Quantum.MOD_ID, name), new BlockItem(block, new FabricItemSettings()));
@@ -43,7 +42,7 @@ public class ModBlocks {
 
         entries.add(METEORITE_ROCK);
         entries.add(NUCLEAR_WASTE);
-        entries.add(DEAD_SOIL);
+        entries.add(REACTOR_CORE);
 
     }
     public static void registerBlockItems() {
