@@ -2,6 +2,6 @@
 	"credit": "Made without Blockbench",
 	"parent": "block/cube_all",
 	"textures": {
-		"all": "quantumadds:block/nuclear_waste"
+		"all": "quantumadds:block/plutonium_core"
 	}
 }

@@ -6,7 +6,10 @@
 	"description": "Well...",
 	"authors": [
 		"timeworndevs",
-		"ItsToastCraft"
+		"Quintexial",
+		"NullHarp",
+		"ItsToastCraft",
+		"Jepril"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
@@ -35,7 +38,7 @@
 		"quantumadds.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.14.21",
+		"fabricloader": ">=0.15.11",
 		"minecraft": "~1.20.1",
 		"java": ">=17",
 		"fabric-api": "*",

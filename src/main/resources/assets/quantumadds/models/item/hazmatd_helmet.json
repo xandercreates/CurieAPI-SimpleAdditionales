@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "quantumadds:item/pvc"
+    "layer0": "quantumadds:item/hazmatd_helmet"
   }
 }

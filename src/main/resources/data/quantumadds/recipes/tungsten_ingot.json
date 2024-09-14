@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "quantumadds:raw_tungsten"
+  },
+  "result": "quantumadds:tungsten_ingot"
+}
+

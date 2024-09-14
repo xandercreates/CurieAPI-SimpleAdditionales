@@ -4,6 +4,11 @@
   "itemGroup.quantumadds.building_blocks": "Building Blocks",
   "item.quantumadds.geiger_counter": "Geiger Counter",
   "block.quantumadds.meteorite_rock": "Meteorite Rock",
+  "block.quantumadds.plutonium_core": "Plutonium Core",
+  "block.quantumadds.heavy_tungsten_block": "Heavy Tungsten Block",
+  "block.quantumadds.tungsten_block": "Tungsten Block",
+  "block.quantumadds.tungsten_ore": "Tungsten Ore",
+  "block.quantumadds.deepslate_tungsten_ore": "Deepslate Tungsten Ore",
   "block.quantumadds.nuclear_waste": "Nuclear Waste",
 
 
@@ -32,5 +37,10 @@
   "effect.quantumadds.exposed_organs": "Exposed Organs",
   "effect.quantumadds.radiation_neutralisation": "Radiation Neutralisation",
   "item.quantumadds.red_pill": "Suspicious Pill",
-  "item.quantumadds.blue_pill": "Medical Pill"
+  "item.quantumadds.blue_pill": "Medical Pill",
+  "item.quantumadds.raw_tungsten": "Raw Tungsten",
+  "item.quantumadds.tungsten_ingot": "Tungsten Ingot",
+  "item.quantumadds.rubber": "Rubber",
+  "item.quantumadds.pvc": "PVC",
+  "death.attack.wither": "%s was disintegrated on nuclear level."
 }
