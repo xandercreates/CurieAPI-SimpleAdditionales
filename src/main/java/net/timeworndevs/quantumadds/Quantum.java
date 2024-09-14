@@ -17,6 +17,7 @@ import net.timeworndevs.quantumadds.effect.ModEffects;
 import net.timeworndevs.quantumadds.entities.ModEntities;
 import net.timeworndevs.quantumadds.entities.custom.MonstrocityEntity;
 import net.timeworndevs.quantumadds.events.PlayerTickHandler;
+import net.timeworndevs.quantumadds.item.Armors.ArmorTestItems;
 import net.timeworndevs.quantumadds.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -28,6 +29,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.timeworndevs.quantumadds.networking.ModMessages;
 import net.timeworndevs.quantumadds.util.ParseJson;
+import net.timeworndevs.quantumadds.world.gen.ModWorldGeneration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -133,7 +135,20 @@ public class Quantum implements ModInitializer {
             ModMessages.NEW_RADIATIONS_SYNC_ID.put(new Identifier("radiation", "radiation_"+i+"_sync"), new ModMessages.NewSyncPackage(i));
 
         }
-        
+        for (int i=0; i<files.size(); i++) {
+            File file =  new File(FabricLoader.getInstance().getConfigDir() + "/curie/" + files.toArray()[i]);
+            if (file.exists()) {
+                BufferedReader br = null;
+                try {
+                    br = new BufferedReader(new FileReader(file));
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+                JsonObject json = JsonParser.parseReader(br).getAsJsonObject();
+                radiation_data.put(file.getName(), json);
+
+            }
+        }
         new_radiation_types.put("alpha", "0f0.2f0.33f1f");
         new_radiation_types.put("beta", "0.24f0.33f0.2f1f");
         new_radiation_types.put("gamma", "0.35f0f0f1f");
@@ -142,17 +157,24 @@ public class Quantum implements ModInitializer {
         // Proceed with mild caution.
         LOGGER.info("Computing wave-functions...");
         ModEffects.registerEffects();
+
+        ModWorldGeneration.generateModWorldGen();
+
         ModBlocks.registerBlocks();
         ModBlocks.registerBlockItems();
+
         ModEntities.registerModEntities();
+
         ModItems.registerItems();
+        ArmorTestItems.registerItems();
         LOGGER.info("Analyzing external dimensions...");
+
         ServerTickEvents.START_SERVER_TICK.register(new PlayerTickHandler());
-        //ModRecipes.registerRecipes();
+
         LOGGER.info("Testing radiation...");
+
         Registry.register(Registries.ITEM_GROUP, new Identifier(MOD_ID, "radiation"), RADIATION);
         Registry.register(Registries.ITEM_GROUP, new Identifier(MOD_ID, "building_blocks"), BUILD_BLOCKS);
-        Registry.register(Registries.ITEM_GROUP, new Identifier(MOD_ID, "quantum"), QUANTUM);
         FabricDefaultAttributeRegistry.register(ModEntities.MONSTROCITY, MonstrocityEntity.createMonstrocityAttributes());
 
         LOGGER.info("Wormhole established!");

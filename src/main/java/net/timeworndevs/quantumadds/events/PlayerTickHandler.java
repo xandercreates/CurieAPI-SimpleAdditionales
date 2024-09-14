@@ -28,12 +28,13 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick {
                 int cur_alpha = ((IEntityDataSaver) player).getPersistentData().getInt("radiation.alpha");
                 int cur_beta = ((IEntityDataSaver) player).getPersistentData().getInt("radiation.beta");
                 int cur_gamma = ((IEntityDataSaver) player).getPersistentData().getInt("radiation.gamma");
+                int cur_neutron = ((IEntityDataSaver) player).getPersistentData().getInt("radiation.neutron");
 
                 if (cur_alpha>9000) {
                     if (Math.random()<0.98) {
                         addMutation(player);
                     } else {
-                        player.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 120, 6));
+                        player.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 120, 6));
                     }
                 } else if (cur_alpha>8000) {
                     if (Math.random()>0.5) {
@@ -61,7 +62,7 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick {
                     if (Math.random()<0.98) {
                         addMutation(player);
                     } else {
-                        player.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 120, 6));
+                        player.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 120, 6));
                     }
                 } else if (cur_beta>8000) {
                     if (Math.random()>0.5) {
@@ -108,6 +109,34 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick {
                         }
                     }
                 } else if (cur_gamma>1000) {
+                    if (Math.random()>0.8) {
+                        player.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20, 1));
+                    }
+                }
+
+                if (cur_neutron>9000) {
+                    if (Math.random()<0.98) {
+                        addMutation(player);
+                    } else {
+                        player.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 120, 6));
+                    }
+                } else if (cur_neutron>8000) {
+                    if (Math.random()>0.5) {
+                        player.addStatusEffect(new StatusEffectInstance(ModEffects.SKINFALLOFF, cur_neutron, 4));
+                    } else {
+                        player.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 60, 2));
+                    }
+                } else if (cur_neutron>5000) {
+                    if (Math.random()>0.8) {
+                        player.addStatusEffect(new StatusEffectInstance(ModEffects.SKINFALLOFF, cur_neutron));
+                    } else {
+                        if (Math.random()>0.5) {
+                            player.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 120, 1));
+                        } else {
+                            player.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 120, 2));
+                        }
+                    }
+                } else if (cur_neutron>1000) {
                     if (Math.random()>0.8) {
                         player.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20, 1));
                     }

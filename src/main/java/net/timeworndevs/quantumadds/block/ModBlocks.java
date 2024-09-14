@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
+import net.minecraft.block.FallingBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -27,10 +28,20 @@ public class ModBlocks {
             new Identifier(Quantum.MOD_ID, "microwave"),
             FabricBlockEntityTypeBuilder.create(MicrowaveEntity::new, MICROWAVE).build()
     );*/
+    public static final Block TUNGSTEN_ORE = registerBlock("tungsten_ore", new Block(FabricBlockSettings.create().strength(4.5f)));
+    public static final Block DEEPSLATE_TUNGSTEN_ORE = registerBlock("deepslate_tungsten_ore", new Block(FabricBlockSettings.create().strength(5.5f)));
+    public static final Block TUNGSTEN_BLOCK = registerBlock("tungsten_block", new Block(FabricBlockSettings.create().strength(7.0f)));
+    public static final Block HEAVY_TUNGSTEN_BLOCK = registerBlock("heavy_tungsten_block", new HeavyTungstenBlock(FabricBlockSettings.create().strength(7.0f)));
+
+    public static final Block PLUTONIUM_ORE = registerBlock("plutonium_ore", new Block(FabricBlockSettings.create().strength(4.0f)));
+    public static final Block DEEPSLATE_PLUTONIUM_ORE = registerBlock("deepslate_plutonium_ore", new Block(FabricBlockSettings.create().strength(5.0f)));
+    public static final Block PLUTONIUM_CORE = registerBlock("plutonium_core", new PlutoniumBlock(FabricBlockSettings.create().strength(4.0f)));
 
     public static final Block METEORITE_ROCK = registerBlock("meteorite_rock", new Block(FabricBlockSettings.create().strength(4.0f)));
 
     public static final Block NUCLEAR_WASTE = registerBlock("nuclear_waste", new Block(FabricBlockSettings.create().strength(4.0f)));
+
+
 
     public static final Block REACTOR_CORE = registerBlock("reactor_core", new ReactorCore(FabricBlockSettings.create().strength(8f).nonOpaque().luminance(4)));
 
@@ -43,6 +54,11 @@ public class ModBlocks {
         entries.add(METEORITE_ROCK);
         entries.add(NUCLEAR_WASTE);
         entries.add(REACTOR_CORE);
+        entries.add(TUNGSTEN_BLOCK);
+        entries.add(TUNGSTEN_ORE);
+        entries.add(DEEPSLATE_TUNGSTEN_ORE);
+        entries.add(TUNGSTEN_BLOCK);
+        entries.add(HEAVY_TUNGSTEN_BLOCK);
 
     }
     public static void registerBlockItems() {

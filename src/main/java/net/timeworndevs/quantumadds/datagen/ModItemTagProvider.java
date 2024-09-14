@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
+import net.timeworndevs.quantumadds.item.Armors.ArmorTestItems;
 import net.timeworndevs.quantumadds.item.ModItems;
 
 import java.util.concurrent.CompletableFuture;
@@ -21,23 +22,23 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
 
         getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
-                .add(ModItems.HAZMATD_HELMET, ModItems.HAZMATD_CHESTPLATE,
-                        ModItems.HAZMATD_LEGGINGS, ModItems.HAZMATD_BOOTS);
+                .add(ArmorTestItems.HAZMAT_HELMET, ArmorTestItems.HAZMAT_CHESTPLATE,
+                        ArmorTestItems.HAZMAT_LEGGINGS, ArmorTestItems.HAZMAT_BOOTS);
+
+
+        /*getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
+                .add(ArmorTestItems.HAZMATC_HELMET, ArmorTestItems.HAZMATC_CHESTPLATE,
+                        ArmorTestItems.HAZMATC_LEGGINGS, ArmorTestItems.HAZMATC_BOOTS);
 
 
         getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
-                .add(ModItems.HAZMATC_HELMET, ModItems.HAZMATC_CHESTPLATE,
-                        ModItems.HAZMATC_LEGGINGS, ModItems.HAZMATC_BOOTS);
+                .add(ArmorTestItems.HAZMATB_HELMET, ArmorTestItems.HAZMATB_CHESTPLATE,
+                        ArmorTestItems.HAZMATB_LEGGINGS, ArmorTestItems.HAZMATB_BOOTS);
 
 
         getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
-                .add(ModItems.HAZMATB_HELMET, ModItems.HAZMATB_CHESTPLATE,
-                        ModItems.HAZMATB_LEGGINGS, ModItems.HAZMATB_BOOTS);
-
-
-        getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
-                .add(ModItems.HAZMATA_HELMET, ModItems.HAZMATA_CHESTPLATE,
-                        ModItems.HAZMATA_LEGGINGS, ModItems.HAZMATA_BOOTS);
+                .add(ArmorTestItems.HAZMATA_HELMET, ArmorTestItems.HAZMATA_CHESTPLATE,
+                        ArmorTestItems.HAZMATA_LEGGINGS, ArmorTestItems.HAZMATA_BOOTS);*/
 
     }
 }
