@@ -26,20 +26,20 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.registerArmor(((ArmorItem) ArmorTestItems.HAZMAT_LEGGINGS));
         itemModelGenerator.registerArmor(((ArmorItem) ArmorTestItems.HAZMAT_BOOTS));
 
-        /*
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.HAZMATC_BOOTS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.HAZMATC_CHESTPLATE));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.HAZMATC_LEGGINGS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.HAZMATC_BOOTS));
 
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.HAZMATB_BOOTS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.HAZMATB_CHESTPLATE));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.HAZMATB_LEGGINGS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.HAZMATB_BOOTS));
+        itemModelGenerator.registerArmor(((ArmorItem) ArmorTestItems.HAZMATC_BOOTS));
+        itemModelGenerator.registerArmor(((ArmorItem) ArmorTestItems.HAZMATC_CHESTPLATE));
+        itemModelGenerator.registerArmor(((ArmorItem) ArmorTestItems.HAZMATC_LEGGINGS));
+        itemModelGenerator.registerArmor(((ArmorItem) ArmorTestItems.HAZMATC_BOOTS));
 
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.HAZMATA_BOOTS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.HAZMATA_CHESTPLATE));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.HAZMATA_LEGGINGS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.HAZMATA_BOOTS));*/
+        itemModelGenerator.registerArmor(((ArmorItem) ArmorTestItems.HAZMATB_BOOTS));
+        itemModelGenerator.registerArmor(((ArmorItem) ArmorTestItems.HAZMATB_CHESTPLATE));
+        itemModelGenerator.registerArmor(((ArmorItem) ArmorTestItems.HAZMATB_LEGGINGS));
+        itemModelGenerator.registerArmor(((ArmorItem) ArmorTestItems.HAZMATB_BOOTS));
+
+        /*itemModelGenerator.registerArmor(((ArmorItem) ArmorTestItems.HAZMATA_BOOTS));
+        itemModelGenerator.registerArmor(((ArmorItem) ArmorTestItems.HAZMATA_CHESTPLATE));
+        itemModelGenerator.registerArmor(((ArmorItem) ArmorTestItems.HAZMATA_LEGGINGS));
+        itemModelGenerator.registerArmor(((ArmorItem) ArmorTestItems.HAZMATA_BOOTS));*/
     }
 }

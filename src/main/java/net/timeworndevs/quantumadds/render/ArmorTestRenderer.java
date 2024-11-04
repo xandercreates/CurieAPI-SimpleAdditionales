@@ -26,7 +26,15 @@ public class ArmorTestRenderer {
                     ArmorTestItems.HAZMAT_HELMET,
                     ArmorTestItems.HAZMAT_CHESTPLATE,
                     ArmorTestItems.HAZMAT_LEGGINGS,
-                    ArmorTestItems.HAZMAT_BOOTS
+                    ArmorTestItems.HAZMAT_BOOTS,
+                    ArmorTestItems.HAZMATC_HELMET,
+                    ArmorTestItems.HAZMATC_CHESTPLATE,
+                    ArmorTestItems.HAZMATC_LEGGINGS,
+                    ArmorTestItems.HAZMATC_BOOTS,
+                    ArmorTestItems.HAZMATB_HELMET,
+                    ArmorTestItems.HAZMATB_CHESTPLATE,
+                    ArmorTestItems.HAZMATB_LEGGINGS,
+                    ArmorTestItems.HAZMATB_BOOTS
             );
     static void renderPart(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, ItemStack stack, Model model, Identifier texture) {
         VertexConsumer vertexConsumer = ItemRenderer.getArmorGlintConsumer(vertexConsumers, RenderLayer.getEntityTranslucent(texture), false, stack.hasGlint());

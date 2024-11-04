@@ -26,7 +26,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                         ArmorTestItems.HAZMAT_LEGGINGS, ArmorTestItems.HAZMAT_BOOTS);
 
 
-        /*getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
+        getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
                 .add(ArmorTestItems.HAZMATC_HELMET, ArmorTestItems.HAZMATC_CHESTPLATE,
                         ArmorTestItems.HAZMATC_LEGGINGS, ArmorTestItems.HAZMATC_BOOTS);
 
@@ -36,7 +36,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                         ArmorTestItems.HAZMATB_LEGGINGS, ArmorTestItems.HAZMATB_BOOTS);
 
 
-        getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
+        /*getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
                 .add(ArmorTestItems.HAZMATA_HELMET, ArmorTestItems.HAZMATA_CHESTPLATE,
                         ArmorTestItems.HAZMATA_LEGGINGS, ArmorTestItems.HAZMATA_BOOTS);*/
 
