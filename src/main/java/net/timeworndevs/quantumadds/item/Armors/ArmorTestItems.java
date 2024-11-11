@@ -27,8 +27,13 @@ public class ArmorTestItems {
     public static final Item HAZMATB_LEGGINGS = new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.LEGGINGS, new FabricItemSettings().rarity(Rarity.RARE), new String[]{"textures/armor/hazmatb_suit_feet.png", "textures/armor/hazmatb_suit_main.png"});
     public static final Item HAZMATB_BOOTS = new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.BOOTS, new FabricItemSettings().rarity(Rarity.RARE), new String[]{"textures/armor/hazmatb_suit_feet.png", "textures/armor/hazmatb_suit_main.png"});
 
+    public static final Item HAZMATA_HELMET = new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new FabricItemSettings().rarity(Rarity.RARE), new String[]{"textures/armor/hazmata_suit_feet.png", "textures/armor/hazmata_suit_main.png"});
+    public static final Item HAZMATA_CHESTPLATE = new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().rarity(Rarity.RARE), new String[]{"textures/armor/hazmata_suit_feet.png", "textures/armor/hazmata_suit_main.png"});
+    public static final Item HAZMATA_LEGGINGS = new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.LEGGINGS, new FabricItemSettings().rarity(Rarity.RARE), new String[]{"textures/armor/hazmata_suit_feet.png", "textures/armor/hazmata_suit_main.png"});
+    public static final Item HAZMATA_BOOTS = new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.BOOTS, new FabricItemSettings().rarity(Rarity.RARE), new String[]{"textures/armor/hazmata_suit_feet.png", "textures/armor/hazmata_suit_main.png"});
+
     public static final Item[] allArmors = {HAZMAT_BOOTS, HAZMAT_LEGGINGS, HAZMAT_CHESTPLATE, HAZMAT_HELMET, HAZMATC_BOOTS, HAZMATC_LEGGINGS, HAZMATC_CHESTPLATE, HAZMATC_HELMET,
-            HAZMATB_BOOTS, HAZMATB_LEGGINGS, HAZMATB_CHESTPLATE, HAZMATB_HELMET};
+            HAZMATB_BOOTS, HAZMATB_LEGGINGS, HAZMATB_CHESTPLATE, HAZMATB_HELMET, HAZMATA_BOOTS, HAZMATA_LEGGINGS, HAZMATA_CHESTPLATE, HAZMATA_HELMET};
     public static void registerItems() {
         registerItem("hazmatd_helmet", HAZMAT_HELMET);
         registerItem("hazmatd_chestplate", HAZMAT_CHESTPLATE);
@@ -44,6 +49,11 @@ public class ArmorTestItems {
         registerItem("hazmatb_chestplate", HAZMATB_CHESTPLATE);
         registerItem("hazmatb_leggings", HAZMATB_LEGGINGS);
         registerItem("hazmatb_boots", HAZMATB_BOOTS);
+
+        registerItem("hazmata_helmet", HAZMATA_HELMET);
+        registerItem("hazmata_chestplate", HAZMATA_CHESTPLATE);
+        registerItem("hazmata_leggings", HAZMATA_LEGGINGS);
+        registerItem("hazmata_boots", HAZMATA_BOOTS);
 
         /*registerItem("hazmata_helmet", HAZMAT_HELMET);
         registerItem("hazmata_chestplate", HAZMAT_CHESTPLATE);
