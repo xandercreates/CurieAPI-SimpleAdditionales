@@ -35,8 +35,8 @@ public class QuantumClient implements ClientModInitializer {
         // Here we will put client-only registration code (thabks toast)
 
         ArmorTestRenderer.register();
-        EntityModelLayerRegistry.registerModelLayer(HAZMAT_SUIT_FEET_LAYER, () -> TexturedModelData.of(HazmatSuitModel.getModelData(), 64, 64));
-        EntityModelLayerRegistry.registerModelLayer(HAZMAT_SUIT_MAIN_LAYER, () -> TexturedModelData.of(HazmatSuitModel.getModelData(), 64, 64));
+        EntityModelLayerRegistry.registerModelLayer(HAZMAT_SUIT_FEET_LAYER, () -> TexturedModelData.of(HazmatSuitModel.getModelData(), 128, 128));
+        EntityModelLayerRegistry.registerModelLayer(HAZMAT_SUIT_MAIN_LAYER, () -> TexturedModelData.of(HazmatSuitModel.getModelData(), 128, 128));
         // This entrypoint is suitable for setting up client-specific logic, such as rendering.
         isFiguraLoaded = (FabricLoader.getInstance().isModLoaded("figura"));
     }
