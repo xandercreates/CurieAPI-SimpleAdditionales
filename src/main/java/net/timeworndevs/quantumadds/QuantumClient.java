@@ -22,8 +22,17 @@ import net.timeworndevs.quantumadds.render.HazmatSuitModel;
 
 @Environment(EnvType.CLIENT)
 public class QuantumClient implements ClientModInitializer {
-    public static final EntityModelLayer HAZMAT_SUIT_FEET_LAYER = new EntityModelLayer(new Identifier(Quantum.MOD_ID, "hazmat_suit"), "feet");
-    public static final EntityModelLayer HAZMAT_SUIT_MAIN_LAYER = new EntityModelLayer(new Identifier(Quantum.MOD_ID,"hazmat_suit"), "main");
+
+    // -- Hazmat Suits -- //
+    public static final EntityModelLayer HAZMAT_A_FEET_LAYER = new EntityModelLayer(new Identifier(Quantum.MOD_ID, "hazmat_suit_a"), "feet");
+    public static final EntityModelLayer HAZMAT_A_MAIN_LAYER = new EntityModelLayer(new Identifier(Quantum.MOD_ID,"hazmat_suit_a"), "main");
+    public static final EntityModelLayer HAZMAT_B_FEET_LAYER = new EntityModelLayer(new Identifier(Quantum.MOD_ID, "hazmat_suit_b"), "feet");
+    public static final EntityModelLayer HAZMAT_B_MAIN_LAYER = new EntityModelLayer(new Identifier(Quantum.MOD_ID,"hazmat_suit_b"), "main");
+    public static final EntityModelLayer HAZMAT_C_FEET_LAYER = new EntityModelLayer(new Identifier(Quantum.MOD_ID, "hazmat_suit_c"), "feet");
+    public static final EntityModelLayer HAZMAT_C_MAIN_LAYER = new EntityModelLayer(new Identifier(Quantum.MOD_ID,"hazmat_suit_c"), "main");
+    public static final EntityModelLayer HAZMAT_D_FEET_LAYER = new EntityModelLayer(new Identifier(Quantum.MOD_ID, "hazmat_suit_d"), "feet");
+    public static final EntityModelLayer HAZMAT_D_MAIN_LAYER = new EntityModelLayer(new Identifier(Quantum.MOD_ID,"hazmat_suit_d"), "main");
+
     public static boolean isFiguraLoaded;
     @Override
     public void onInitializeClient() {

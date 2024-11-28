@@ -8,6 +8,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.timeworndevs.quantumadds.Quantum;
@@ -19,8 +20,8 @@ public class HazmatSuitItem extends ArmorItem {
     @Environment(EnvType.CLIENT)
     private BipedEntityModel<LivingEntity> model;
 
-    private String texture_feet = "textures/armor/hazmat_suit_feet.png";
-    private String texture_rest = "textures/armor/hazmat_suit_main.png";
+    private final String texture_feet;
+    private final String texture_rest;
     public HazmatSuitItem(ArmorMaterial material, Type type, Settings settings, String[] textures) {
         super(material, type, settings);
         texture_feet = textures[0];
@@ -49,11 +50,12 @@ public class HazmatSuitItem extends ArmorItem {
     }
 
     @Environment(EnvType.CLIENT)
-    protected BipedEntityModel<LivingEntity> provideArmorModelForSlot(EquipmentSlot slot) {
+    protected BipedEntityModel<LivingEntity> provideArmorModelForSlot(EquipmentSlot slot, Item item) {
 
         var models = MinecraftClient.getInstance().getEntityModelLoader();
-        var feet = models.getModelPart(QuantumClient.HAZMAT_SUIT_FEET_LAYER);
-        var root = models.getModelPart(QuantumClient.HAZMAT_SUIT_MAIN_LAYER);
+
+        var feet = models.getModelPart(QuantumClient.HAZMAT_A_FEET_LAYER);
+        var root = models.getModelPart(QuantumClient.HAZMAT_A_MAIN_LAYER);
         if (slot == EquipmentSlot.FEET) {
             return new FullArmorModel(feet, slot);
         } else {
@@ -62,9 +64,9 @@ public class HazmatSuitItem extends ArmorItem {
     }
 
     @Environment(EnvType.CLIENT)
-    public BipedEntityModel<LivingEntity> getArmorModel() {
+    public BipedEntityModel<LivingEntity> getArmorModel(Item item) {
         if (model == null) {
-            model = provideArmorModelForSlot(getSlotType());
+            model = provideArmorModelForSlot(getSlotType(), item);
         }
         return model;
     }
