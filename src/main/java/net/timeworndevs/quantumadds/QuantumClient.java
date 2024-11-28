@@ -17,8 +17,7 @@ import net.timeworndevs.quantumadds.entities.ModEntities;
 import net.timeworndevs.quantumadds.entities.client.GooberModel;
 import net.timeworndevs.quantumadds.entities.client.ModModelLayers;
 import net.timeworndevs.quantumadds.entities.client.MonstrocityRenderer;
-import net.timeworndevs.quantumadds.render.ArmorTestRenderer;
-import net.timeworndevs.quantumadds.render.HazmatSuitModel;
+import net.timeworndevs.quantumadds.render.*;
 
 @Environment(EnvType.CLIENT)
 public class QuantumClient implements ClientModInitializer {
@@ -44,8 +43,14 @@ public class QuantumClient implements ClientModInitializer {
         // Here we will put client-only registration code (thabks toast)
 
         ArmorTestRenderer.register();
-        EntityModelLayerRegistry.registerModelLayer(HAZMAT_SUIT_FEET_LAYER, () -> TexturedModelData.of(HazmatSuitModel.getModelData(), 128, 128));
-        EntityModelLayerRegistry.registerModelLayer(HAZMAT_SUIT_MAIN_LAYER, () -> TexturedModelData.of(HazmatSuitModel.getModelData(), 128, 128));
+        EntityModelLayerRegistry.registerModelLayer(HAZMAT_A_FEET_LAYER, () -> TexturedModelData.of(HazmatSuitLevelOneModel.getModelData(), 128, 128));
+        EntityModelLayerRegistry.registerModelLayer(HAZMAT_A_MAIN_LAYER, () -> TexturedModelData.of(HazmatSuitLevelOneModel.getModelData(), 128, 128));
+        EntityModelLayerRegistry.registerModelLayer(HAZMAT_B_FEET_LAYER, () -> TexturedModelData.of(HazmatSuitLevelTwoModel.getModelData(), 128, 128));
+        EntityModelLayerRegistry.registerModelLayer(HAZMAT_B_MAIN_LAYER, () -> TexturedModelData.of(HazmatSuitLevelTwoModel.getModelData(), 128, 128));
+        EntityModelLayerRegistry.registerModelLayer(HAZMAT_C_FEET_LAYER, () -> TexturedModelData.of(HazmatSuitLevelThreeModel.getModelData(), 128, 128));
+        EntityModelLayerRegistry.registerModelLayer(HAZMAT_C_MAIN_LAYER, () -> TexturedModelData.of(HazmatSuitLevelThreeModel.getModelData(), 128, 128));
+        EntityModelLayerRegistry.registerModelLayer(HAZMAT_D_FEET_LAYER, () -> TexturedModelData.of(HazmatSuitLevelFourModel.getModelData(), 128, 128));
+        EntityModelLayerRegistry.registerModelLayer(HAZMAT_D_MAIN_LAYER, () -> TexturedModelData.of(HazmatSuitLevelFourModel.getModelData(), 128, 128));
         // This entrypoint is suitable for setting up client-specific logic, such as rendering.
         isFiguraLoaded = (FabricLoader.getInstance().isModLoaded("figura"));
     }
