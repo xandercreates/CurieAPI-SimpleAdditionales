@@ -66,10 +66,16 @@ java {
 }
 
 jar {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 	from("LICENSE") {
 		rename { "${it}_${project.archivesBaseName}"}
 	}
+	dependsOn runDatagen
+	from("src/main/generated") {
+		exclude ".cache"
+	}
 }
+clean.delete("src/main/generated")
 
 // configure the maven publication
 publishing {
@@ -100,14 +106,15 @@ loom {
 			runDir "build/datagen"
 		}
 	}
+
 }
 
-sourceSets {
-	main {
-		resources {
-			srcDirs += [
-					'src/main/generated'
-			]
-		}
-	}
-}
+//sourceSets {
+//	main {
+//		resources {
+//			srcDirs += [
+//					'src/main/generated'
+//			]
+//		}
+//	}
+//}
