@@ -35,7 +35,7 @@ public class ModBlocks {
 
     public static final Block PLUTONIUM_ORE = registerBlock("plutonium_ore", new Block(FabricBlockSettings.create().strength(4.0f)));
     public static final Block DEEPSLATE_PLUTONIUM_ORE = registerBlock("deepslate_plutonium_ore", new Block(FabricBlockSettings.create().strength(5.0f)));
-    public static final Block PLUTONIUM_CORE = registerBlock("plutonium_core", new PlutoniumBlock(FabricBlockSettings.create().strength(4.0f)));
+    //public static final Block PLUTONIUM_CORE = registerBlock("plutonium_core", new PlutoniumBlock(FabricBlockSettings.create().strength(4.0f))); GONNA UPDATE THIS SOME DAY IN THE FUTUREEEEEEEEEEEEEEEEEEEEEE
 
     public static final Block METEORITE_ROCK = registerBlock("meteorite_rock", new Block(FabricBlockSettings.create().strength(4.0f)));
 
