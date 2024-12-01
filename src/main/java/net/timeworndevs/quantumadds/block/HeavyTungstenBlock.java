@@ -20,9 +20,9 @@ public class HeavyTungstenBlock extends FallingBlock {
 
     @Override
     public void onLanding(World world, BlockPos pos, BlockState fallingBlockState, BlockState currentStateInPos, FallingBlockEntity fallingBlockEntity) {
-        if (world.getBlockState(pos.offset(Direction.Axis.Y, -1)).getBlock().equals(ModBlocks.PLUTONIUM_CORE)) {
+        /*if (world.getBlockState(pos.offset(Direction.Axis.Y, -1)).getBlock().equals(ModBlocks.PLUTONIUM_CORE)) {
             ((PlutoniumBlock) world.getBlockState(pos.offset(Direction.Axis.Y, -1)).getBlock()).goSupercritical(world, pos.offset(Direction.Axis.Y, -1), 40);
-        }
+        }*/
     }
 }
 /*
