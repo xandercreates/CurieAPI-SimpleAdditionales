@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "quantumadds:item/hazmatd_leggings",
+    "layer1": "quantumadds:item/hazmatd_leggings_overlay",
+    "layer2": "minecraft:trims/items/leggings_trim_quartz"
+  }
+}

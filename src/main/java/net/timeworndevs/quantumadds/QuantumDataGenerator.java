@@ -1,6 +1,7 @@
 package net.timeworndevs.quantumadds;
 
 import net.timeworndevs.quantumadds.datagen.ModItemTagProvider;
+import net.timeworndevs.quantumadds.datagen.ModModelProvider;
 import net.timeworndevs.quantumadds.world.ModConfiguredFeatures;
 import net.timeworndevs.quantumadds.world.ModPlacedFeatures;
 import net.timeworndevs.quantumadds.world.biome.ModBiomes;
@@ -16,6 +17,7 @@ public class QuantumDataGenerator implements DataGeneratorEntrypoint {
         FabricDataGenerator.Pack pack = generator.createPack();
         pack.addProvider(ModWorldGenerator::new);
         pack.addProvider(ModItemTagProvider::new);
+        pack.addProvider(ModModelProvider::new);
     }
 
     @Override

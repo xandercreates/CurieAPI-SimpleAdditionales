@@ -6,19 +6,16 @@ package net.timeworndevs.quantumadds.entities.client;
 
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.entity.animation.AnimationHelper;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.MathHelper;
 import net.timeworndevs.quantumadds.entities.animation.ModAnimations;
 import net.timeworndevs.quantumadds.entities.custom.MonstrocityEntity;
-import org.joml.Vector3f;
 
 public class GooberModel<T extends MonstrocityEntity> extends SinglePartEntityModel<T> {
 	private final ModelPart Root;
 	private final ModelPart Body;
-	private final ModelPart LeftFrontLeg;
-	private final ModelPart LeftFrontLeg1;
+    private final ModelPart LeftFrontLeg1;
 	private final ModelPart LeftFrontLeg2;
 	private final ModelPart RightFrontLeg;
 	private final ModelPart RightFrontLeg1;
@@ -42,8 +39,8 @@ public class GooberModel<T extends MonstrocityEntity> extends SinglePartEntityMo
 	public GooberModel(ModelPart root) {
 		this.Root = root.getChild("Root");
 		this.Body = this.Root.getChild("Body");
-		this.LeftFrontLeg = this.Body.getChild("LeftFrontLeg");
-		this.LeftFrontLeg1 = this.LeftFrontLeg.getChild("LeftFrontLeg1");
+        ModelPart leftFrontLeg = this.Body.getChild("LeftFrontLeg");
+		this.LeftFrontLeg1 = leftFrontLeg.getChild("LeftFrontLeg1");
 		this.LeftFrontLeg2 = this.LeftFrontLeg1.getChild("LeftFrontLeg2");
 		this.RightFrontLeg = this.Body.getChild("RightFrontLeg");
 		this.RightFrontLeg1 = this.RightFrontLeg.getChild("RightFrontLeg1");

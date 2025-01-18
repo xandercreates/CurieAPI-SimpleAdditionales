@@ -1,23 +1,14 @@
 package net.timeworndevs.quantumadds;
 
 import com.google.gson.*;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.resource.Resource;
-import net.minecraft.resource.ResourceManager;
-import net.minecraft.resource.ResourceType;
 import net.timeworndevs.quantumadds.block.ModBlocks;
 import net.timeworndevs.quantumadds.effect.ModEffects;
 import net.timeworndevs.quantumadds.entities.ModEntities;
 import net.timeworndevs.quantumadds.entities.custom.MonstrocityEntity;
 import net.timeworndevs.quantumadds.events.PlayerTickHandler;
-import net.timeworndevs.quantumadds.item.Armors.ArmorTestItems;
 import net.timeworndevs.quantumadds.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -28,7 +19,6 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.timeworndevs.quantumadds.networking.ModMessages;
-import net.timeworndevs.quantumadds.util.ParseJson;
 import net.timeworndevs.quantumadds.world.gen.ModWorldGeneration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,9 +29,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
-import static net.minecraft.server.command.CommandManager.*;
-
-import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -166,7 +153,6 @@ public class Quantum implements ModInitializer {
         ModEntities.registerModEntities();
 
         ModItems.registerItems();
-        ArmorTestItems.registerItems();
         LOGGER.info("Analyzing external dimensions...");
 
         ServerTickEvents.START_SERVER_TICK.register(new PlayerTickHandler());

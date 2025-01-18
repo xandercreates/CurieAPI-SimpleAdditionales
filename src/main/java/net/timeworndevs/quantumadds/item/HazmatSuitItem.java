@@ -20,12 +20,11 @@ public class HazmatSuitItem extends ArmorItem {
     @Environment(EnvType.CLIENT)
     private BipedEntityModel<LivingEntity> model;
 
-    private final String texture_feet;
-    private final String texture_rest;
-    public HazmatSuitItem(ArmorMaterial material, Type type, Settings settings, String[] textures) {
+    private final String texture_feet, texture_rest;
+    public HazmatSuitItem(ArmorMaterial material, Type type, Settings settings, String texture) {
         super(material, type, settings);
-        texture_feet = textures[0];
-        texture_rest = textures[1];
+        texture_feet = "textures/armor/" + texture + "_suit_feet.png";
+        texture_rest = "textures/armor/" + texture + "_suit_main.png";
     }
 
 
@@ -72,7 +71,7 @@ public class HazmatSuitItem extends ArmorItem {
     }
 
     @NotNull
-    public Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot) {
+    public Identifier getArmorTexture(EquipmentSlot slot) {
         if (slot == EquipmentSlot.FEET) {
             return new Identifier(Quantum.MOD_ID, this.texture_feet);
         } else {

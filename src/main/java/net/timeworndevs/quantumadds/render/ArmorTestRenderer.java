@@ -9,26 +9,15 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.timeworndevs.quantumadds.QuantumClient;
 import net.timeworndevs.quantumadds.compat.FiguraCompat;
-import net.timeworndevs.quantumadds.item.Armors.ArmorTestItems;
 import net.timeworndevs.quantumadds.item.HazmatSuitItem;
-
-import java.util.List;
+import net.timeworndevs.quantumadds.item.ModItems;
 
 
 public class ArmorTestRenderer {
-
-    public static final List<Item> HAZMAT_SUIT =
-            List.of(
-                    ArmorTestItems.HAZMATA_HELMET,
-                    ArmorTestItems.HAZMATA_CHESTPLATE,
-                    ArmorTestItems.HAZMATA_LEGGINGS,
-                    ArmorTestItems.HAZMATA_BOOTS
-            );
 
     static void renderPart(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, ItemStack stack, Model model, Identifier texture) {
         VertexConsumer vertexConsumer = ItemRenderer.getArmorGlintConsumer(vertexConsumers, RenderLayer.getEntityTranslucent(texture), false, stack.hasGlint());
@@ -40,14 +29,13 @@ public class ArmorTestRenderer {
 
             HazmatSuitItem armor = (HazmatSuitItem) stack.getItem();
             var model = armor.getArmorModel(stack.getItem());
-            var texture = armor.getArmorTexture(stack, slot);
+            var texture = armor.getArmorTexture(slot);
             boolean shouldRender = !QuantumClient.isFiguraLoaded || FiguraCompat.renderArmorPart((PlayerEntity) entity, slot);
-
             if (shouldRender) {
                 contextModel.copyBipedStateTo(model);
                 renderPart(matrices, vertexConsumers, light, stack, model, texture);
             }
         };
-        ArmorRenderer.register(renderer, HAZMAT_SUIT.toArray(new Item[0]));
+        ArmorRenderer.register(renderer, ModItems.allArmors);
     }
 }

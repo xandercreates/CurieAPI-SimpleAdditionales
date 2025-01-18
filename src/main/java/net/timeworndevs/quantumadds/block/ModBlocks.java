@@ -6,7 +6,6 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
-import net.minecraft.block.FallingBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -17,17 +16,11 @@ import net.timeworndevs.quantumadds.Quantum;
 
 public class ModBlocks {
 
-    //public static final Block MICROWAVE = registerBlock("microwave", new ModBlocks (FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
-
     public static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, new Identifier(Quantum.MOD_ID, name), block);
     }
-    /*public static final BlockEntityType<MicrowaveEntity> MICROWAVE_ENTITY = Registry.register(
-            Registries.BLOCK_ENTITY_TYPE,
-            new Identifier(Quantum.MOD_ID, "microwave"),
-            FabricBlockEntityTypeBuilder.create(MicrowaveEntity::new, MICROWAVE).build()
-    );*/
+
     public static final Block TUNGSTEN_ORE = registerBlock("tungsten_ore", new Block(FabricBlockSettings.create().strength(4.5f)));
     public static final Block DEEPSLATE_TUNGSTEN_ORE = registerBlock("deepslate_tungsten_ore", new Block(FabricBlockSettings.create().strength(5.5f)));
     public static final Block TUNGSTEN_BLOCK = registerBlock("tungsten_block", new Block(FabricBlockSettings.create().strength(7.0f)));
@@ -40,8 +33,6 @@ public class ModBlocks {
     public static final Block METEORITE_ROCK = registerBlock("meteorite_rock", new Block(FabricBlockSettings.create().strength(4.0f)));
 
     public static final Block NUCLEAR_WASTE = registerBlock("nuclear_waste", new Block(FabricBlockSettings.create().strength(4.0f)));
-
-
 
     public static final Block REACTOR_CORE = registerBlock("reactor_core", new ReactorCore(FabricBlockSettings.create().strength(8f).nonOpaque().luminance(4)));
 
@@ -64,8 +55,6 @@ public class ModBlocks {
     public static void registerBlockItems() {
         ItemGroupEvents.modifyEntriesEvent(RegistryKey.of(Registries.ITEM_GROUP.getKey(), new Identifier(Quantum.MOD_ID, "building_blocks"))).register(ModBlocks::creativeEntries);
     }
-    public static void registerBlocks() {
-
-    }
+    public static void registerBlocks() {}
 
 }

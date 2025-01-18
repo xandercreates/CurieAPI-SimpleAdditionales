@@ -1,12 +1,18 @@
 package net.timeworndevs.quantumadds.events;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.render.entity.EntityRenderDispatcher;
+import net.minecraft.client.render.entity.EntityRenderer;
+import net.minecraft.client.render.entity.PlayerEntityRenderer;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.math.random.Random;
 import net.timeworndevs.quantumadds.Quantum;
 import net.timeworndevs.quantumadds.effect.ModEffects;
 import net.timeworndevs.quantumadds.util.IEntityDataSaver;
@@ -155,13 +161,15 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick {
     public interface Mutation {
         void mutate(ServerPlayerEntity player);
     }
-
     List<Mutation> mutations = new ArrayList<>(List.of(
             player -> player.setGlowing(true),
             player -> player.setAbsorptionAmount(3f),
             player -> player.setNoGravity(true),
             player -> player.setBodyYaw(2f),
-            player -> player.setHeadYaw(45f)
+            player -> player.setHeadYaw(45f),
+            player -> {
+                 ((IEntityDataSaver) player).getPersistentData().putBoolean("radiation.tinted", true);
+            }
             ));
     private void addMutation(ServerPlayerEntity player) {
 
