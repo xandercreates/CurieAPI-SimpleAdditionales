@@ -35,25 +35,25 @@ public class ModItems {
 
     public static final Item GAMMA_SRC = registerItem("gammasrc", new Item(new FabricItemSettings()));
 
-    public static final Item HAZMATD_HELMET = registerItem("hazmatd_helmet", new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new FabricItemSettings().rarity(Rarity.RARE), "hazmatd"));
-    public static final Item HAZMATD_CHESTPLATE = registerItem("hazmatd_chestplate", new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().rarity(Rarity.RARE), "hazmatd"));
-    public static final Item HAZMATD_LEGGINGS = registerItem("hazmatd_leggings", new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.LEGGINGS, new FabricItemSettings().rarity(Rarity.RARE), "hazmatd"));
-    public static final Item HAZMATD_BOOTS = registerItem("hazmatd_boots", new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.BOOTS, new FabricItemSettings().rarity(Rarity.RARE), "hazmatd"));
+    public static final Item HAZMATD_HELMET = registerItem("hazmatd_helmet", new HazmatSuitItem(ModArmorMaterials.HAZMATD, ArmorItem.Type.HELMET, new FabricItemSettings().rarity(Rarity.RARE), "hazmatd"));
+    public static final Item HAZMATD_CHESTPLATE = registerItem("hazmatd_chestplate", new HazmatSuitItem(ModArmorMaterials.HAZMATD, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().rarity(Rarity.RARE), "hazmatd"));
+    public static final Item HAZMATD_LEGGINGS = registerItem("hazmatd_leggings", new HazmatSuitItem(ModArmorMaterials.HAZMATD, ArmorItem.Type.LEGGINGS, new FabricItemSettings().rarity(Rarity.RARE), "hazmatd"));
+    public static final Item HAZMATD_BOOTS = registerItem("hazmatd_boots", new HazmatSuitItem(ModArmorMaterials.HAZMATD, ArmorItem.Type.BOOTS, new FabricItemSettings().rarity(Rarity.RARE), "hazmatd"));
 
-    public static final Item HAZMATC_HELMET = registerItem("hazmatc_helmet", new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new FabricItemSettings().rarity(Rarity.RARE), "hazmatc"));
-    public static final Item HAZMATC_CHESTPLATE = registerItem("hazmatc_chestplate", new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().rarity(Rarity.RARE), "hazmatc"));
-    public static final Item HAZMATC_LEGGINGS = registerItem("hazmatc_leggings", new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.LEGGINGS, new FabricItemSettings().rarity(Rarity.RARE), "hazmatc"));
-    public static final Item HAZMATC_BOOTS = registerItem("hazmatc_boots", new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.BOOTS, new FabricItemSettings().rarity(Rarity.RARE), "hazmatc"));
+    public static final Item HAZMATC_HELMET = registerItem("hazmatc_helmet", new HazmatSuitItem(ModArmorMaterials.HAZMATC, ArmorItem.Type.HELMET, new FabricItemSettings().rarity(Rarity.RARE), "hazmatc"));
+    public static final Item HAZMATC_CHESTPLATE = registerItem("hazmatc_chestplate", new HazmatSuitItem(ModArmorMaterials.HAZMATC, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().rarity(Rarity.RARE), "hazmatc"));
+    public static final Item HAZMATC_LEGGINGS = registerItem("hazmatc_leggings", new HazmatSuitItem(ModArmorMaterials.HAZMATC, ArmorItem.Type.LEGGINGS, new FabricItemSettings().rarity(Rarity.RARE), "hazmatc"));
+    public static final Item HAZMATC_BOOTS = registerItem("hazmatc_boots", new HazmatSuitItem(ModArmorMaterials.HAZMATC, ArmorItem.Type.BOOTS, new FabricItemSettings().rarity(Rarity.RARE), "hazmatc"));
 
-    public static final Item HAZMATB_HELMET = registerItem("hazmatb_helmet", new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new FabricItemSettings().rarity(Rarity.RARE), "hazmatb"));
-    public static final Item HAZMATB_CHESTPLATE = registerItem("hazmatb_chestplate", new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().rarity(Rarity.RARE), "hazmatb"));
-    public static final Item HAZMATB_LEGGINGS = registerItem("hazmatb_leggings", new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.LEGGINGS, new FabricItemSettings().rarity(Rarity.RARE), "hazmatb"));
-    public static final Item HAZMATB_BOOTS = registerItem("hazmatb_boots", new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.BOOTS, new FabricItemSettings().rarity(Rarity.RARE), "hazmatb"));
+    public static final Item HAZMATB_HELMET = registerItem("hazmatb_helmet", new HazmatSuitItem(ModArmorMaterials.HAZMATB, ArmorItem.Type.HELMET, new FabricItemSettings().rarity(Rarity.RARE), "hazmatb"));
+    public static final Item HAZMATB_CHESTPLATE = registerItem("hazmatb_chestplate", new HazmatSuitItem(ModArmorMaterials.HAZMATB, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().rarity(Rarity.RARE), "hazmatb"));
+    public static final Item HAZMATB_LEGGINGS = registerItem("hazmatb_leggings", new HazmatSuitItem(ModArmorMaterials.HAZMATB, ArmorItem.Type.LEGGINGS, new FabricItemSettings().rarity(Rarity.RARE), "hazmatb"));
+    public static final Item HAZMATB_BOOTS = registerItem("hazmatb_boots", new HazmatSuitItem(ModArmorMaterials.HAZMATB, ArmorItem.Type.BOOTS, new FabricItemSettings().rarity(Rarity.RARE), "hazmatb"));
 
-    public static final Item HAZMATA_HELMET = registerItem("hazmata_helmet", new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new FabricItemSettings().rarity(Rarity.RARE), "hazmata"));
-    public static final Item HAZMATA_CHESTPLATE = registerItem("hazmata_chestplate", new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().rarity(Rarity.RARE), "hazmata"));
-    public static final Item HAZMATA_LEGGINGS = registerItem("hazmata_leggings", new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.LEGGINGS, new FabricItemSettings().rarity(Rarity.RARE), "hazmata"));
-    public static final Item HAZMATA_BOOTS = registerItem("hazmata_boots", new HazmatSuitItem(ArmorMaterials.LEATHER, ArmorItem.Type.BOOTS, new FabricItemSettings().rarity(Rarity.RARE), "hazmata"));
+    public static final Item HAZMATA_HELMET = registerItem("hazmata_helmet", new HazmatSuitItem(ModArmorMaterials.HAZMATA, ArmorItem.Type.HELMET, new FabricItemSettings().rarity(Rarity.RARE), "hazmata"));
+    public static final Item HAZMATA_CHESTPLATE = registerItem("hazmata_chestplate", new HazmatSuitItem(ModArmorMaterials.HAZMATA, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().rarity(Rarity.RARE), "hazmata"));
+    public static final Item HAZMATA_LEGGINGS = registerItem("hazmata_leggings", new HazmatSuitItem(ModArmorMaterials.HAZMATA, ArmorItem.Type.LEGGINGS, new FabricItemSettings().rarity(Rarity.RARE), "hazmata"));
+    public static final Item HAZMATA_BOOTS = registerItem("hazmata_boots", new HazmatSuitItem(ModArmorMaterials.HAZMATA, ArmorItem.Type.BOOTS, new FabricItemSettings().rarity(Rarity.RARE), "hazmata"));
 
     public static final Item[] allArmors = {HAZMATD_BOOTS, HAZMATD_LEGGINGS, HAZMATD_CHESTPLATE, HAZMATD_HELMET, HAZMATC_BOOTS, HAZMATC_LEGGINGS, HAZMATC_CHESTPLATE, HAZMATC_HELMET,
             HAZMATB_BOOTS, HAZMATB_LEGGINGS, HAZMATB_CHESTPLATE, HAZMATB_HELMET, HAZMATA_BOOTS, HAZMATA_LEGGINGS, HAZMATA_CHESTPLATE, HAZMATA_HELMET};
