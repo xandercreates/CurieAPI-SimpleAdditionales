@@ -5,6 +5,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.player.PlayerEntity;
+import net.timeworndevs.quantumadds.Quantum;
 import net.timeworndevs.quantumadds.util.IEntityDataSaver;
 import net.timeworndevs.quantumadds.util.RadiationData;
 
@@ -23,7 +24,8 @@ public class RadiationNeutralisation extends StatusEffect {
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         if (!entity.getWorld().isClient()) {
             if (entity.isPlayer()) {
-                for (String i: new String[]{"alpha", "beta", "gamma"}) {
+
+                for (String i: Quantum.new_radiation_types.keySet()) {
                     RadiationData.delRad((IEntityDataSaver) entity, i, (int) (Math.random()*10*amplifier));
                 }
 
