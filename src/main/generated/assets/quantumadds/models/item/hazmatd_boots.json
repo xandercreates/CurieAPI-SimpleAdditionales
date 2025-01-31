@@ -63,7 +63,6 @@
     }
   ],
   "textures": {
-    "layer0": "quantumadds:item/hazmatd_boots",
-    "layer1": "quantumadds:item/hazmatd_boots_overlay"
+    "layer0": "quantumadds:item/hazmatd_boots"
   }
 }

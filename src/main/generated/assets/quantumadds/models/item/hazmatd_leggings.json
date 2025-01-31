@@ -63,7 +63,6 @@
     }
   ],
   "textures": {
-    "layer0": "quantumadds:item/hazmatd_leggings",
-    "layer1": "quantumadds:item/hazmatd_leggings_overlay"
+    "layer0": "quantumadds:item/hazmatd_leggings"
   }
 }

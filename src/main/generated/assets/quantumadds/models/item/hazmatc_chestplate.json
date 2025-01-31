@@ -63,7 +63,6 @@
     }
   ],
   "textures": {
-    "layer0": "quantumadds:item/hazmatc_chestplate",
-    "layer1": "quantumadds:item/hazmatc_chestplate_overlay"
+    "layer0": "quantumadds:item/hazmatc_chestplate"
   }
 }

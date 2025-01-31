@@ -30,7 +30,7 @@ public class ArmorTestRenderer {
             HazmatSuitItem armor = (HazmatSuitItem) stack.getItem();
             var model = armor.getArmorModel(stack.getItem());
             var texture = armor.getArmorTexture(slot);
-            boolean shouldRender = !QuantumClient.isFiguraLoaded || FiguraCompat.renderArmorPart((PlayerEntity) entity, slot);
+            boolean shouldRender = !(entity instanceof PlayerEntity) || !QuantumClient.isFiguraLoaded || FiguraCompat.renderArmorPart((PlayerEntity) entity, slot);
             if (shouldRender) {
                 contextModel.copyBipedStateTo(model);
                 renderPart(matrices, vertexConsumers, light, stack, model, texture);

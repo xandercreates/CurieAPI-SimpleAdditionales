@@ -63,7 +63,6 @@
     }
   ],
   "textures": {
-    "layer0": "quantumadds:item/hazmatb_helmet",
-    "layer1": "quantumadds:item/hazmatb_helmet_overlay"
+    "layer0": "quantumadds:item/hazmatb_helmet"
   }
 }
