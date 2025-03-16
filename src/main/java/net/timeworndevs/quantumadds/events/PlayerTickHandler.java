@@ -5,6 +5,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.PlayerEntityRenderer;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -12,6 +13,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.Arm;
 import net.minecraft.util.math.random.Random;
 import net.timeworndevs.quantumadds.Quantum;
 import net.timeworndevs.quantumadds.effect.ModEffects;
@@ -164,9 +166,23 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick {
     List<Mutation> mutations = new ArrayList<>(List.of(
             player -> player.setGlowing(true),
             player -> player.setAbsorptionAmount(3f),
-            player -> player.setNoGravity(true),
             player -> player.setBodyYaw(2f),
             player -> player.setHeadYaw(45f),
+            player -> {
+                player.setMainArm(player.getMainArm().getOpposite());
+            },
+            player -> {
+                player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 600, 1));
+            },
+            player -> {
+                player.addStatusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 60, 1));
+            },
+            player -> {
+                player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 600, 1));
+            },
+            player -> {
+                player.setInPowderSnow(true);
+            },
             player -> {
                  ((IEntityDataSaver) player).getPersistentData().putBoolean("radiation.tinted", true);
             }
