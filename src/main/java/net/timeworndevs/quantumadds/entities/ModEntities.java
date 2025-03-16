@@ -14,7 +14,7 @@ public class ModEntities {
     public static EntityType<MonstrocityEntity> MONSTROCITY = Registry.register(Registries.ENTITY_TYPE,
             new Identifier(Quantum.MOD_ID, "monstrocity"),
             FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, MonstrocityEntity::new).dimensions(EntityDimensions.fixed(1f, 1f)).build());
-
+    
     public static void registerModEntities() {
 
         Quantum.LOGGER.info("Registering piles of flesh for " + Quantum.MOD_ID);

@@ -24,10 +24,10 @@ public class ModPlacedFeatures {
 
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
-        register(context, PLUTONIUM_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PLUTONIUM_ORE_KEY), ModOrePlacement.modifiersWithCount(4,
+        /*register(context, PLUTONIUM_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PLUTONIUM_ORE_KEY), ModOrePlacement.modifiersWithCount(4,
                 HeightRangePlacementModifier.trapezoid(new YOffset.Fixed(-20), new YOffset.Fixed(20))));
         register(context, TUNGSTEN_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.TUNGSTEN_ORE_KEY), ModOrePlacement.modifiersWithCount(4,
-                HeightRangePlacementModifier.trapezoid(new YOffset.Fixed(-30), new YOffset.Fixed(30))));    }
+                HeightRangePlacementModifier.trapezoid(new YOffset.Fixed(-30), new YOffset.Fixed(30))));*/    }
     public static RegistryKey<PlacedFeature> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(Quantum.MOD_ID, name));
     }

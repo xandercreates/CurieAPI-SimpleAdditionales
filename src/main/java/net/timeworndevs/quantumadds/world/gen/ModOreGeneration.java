@@ -8,7 +8,7 @@ import net.timeworndevs.quantumadds.world.ModPlacedFeatures;
 
 public class ModOreGeneration {
     public static void generateOres() {
-        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
-                GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.PLUTONIUM_ORE_PLACED_KEY);
+        //BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
+        //        GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.PLUTONIUM_ORE_PLACED_KEY);
     }
 }

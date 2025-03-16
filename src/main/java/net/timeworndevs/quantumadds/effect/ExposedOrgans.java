@@ -24,7 +24,7 @@ public class ExposedOrgans extends StatusEffect {
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         if (!entity.getWorld().isClient()) {
             if (entity.isPlayer()) {
-                RadiationData.addRad((IEntityDataSaver) entity, (String) Quantum.new_radiation_types.keySet().toArray()[(int) (Math.random()*5-0.01)], (int) (Math.random()*10*amplifier));
+                RadiationData.addRad((IEntityDataSaver) entity, (String) Quantum.new_radiation_types.keySet().toArray()[(int) (Math.random()* Quantum.new_radiation_types.keySet().size()-0.01)], (int) (Math.random()*10*amplifier));
             }
         }
         super.applyUpdateEffect(entity, amplifier);
