@@ -20,18 +20,4 @@ public abstract class ModEntityDataSaverMixin implements IEntityDataSaver {
         }
         return persistentData;
     }
-
-    @Inject(method="writeNbt", at = @At("HEAD"))
-    protected void injectWriteMethod(NbtCompound nbt, CallbackInfoReturnable info) {
-        if (persistentData!=null) {
-            nbt.put(Quantum.MOD_ID + ".fok_data", persistentData);
-        }
-    }
-
-    @Inject(method="readNbt", at = @At("HEAD"))
-    protected void injectReadMethod(NbtCompound nbt, CallbackInfo info) {
-        if (nbt.contains(Quantum.MOD_ID+".fok_data", 10)) {
-            persistentData = nbt.getCompound(Quantum.MOD_ID + ".fok_data");
-        }
-    }
 }
