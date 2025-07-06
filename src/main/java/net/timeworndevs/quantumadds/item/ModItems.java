@@ -19,7 +19,7 @@ public class ModItems {
     public static final Item BLUE_PILL = registerItem("blue_pill", new Item(new FabricItemSettings().food(ModFood.MEDICAL_PILL)));
 
 
-    public static final Item GEIGER_COUNTER = registerItem("geiger_counter", new GeigerCounter(new FabricItemSettings().maxCount(1).maxDamage(64).rarity(Rarity.RARE)));
+    public static final Item GEIGER_COUNTER = registerItem("geiger_counter", new GeigerCounter(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)));
 
 
     public static final Item PLUTONIUM = registerItem("plutonium", new Item(new FabricItemSettings()));
