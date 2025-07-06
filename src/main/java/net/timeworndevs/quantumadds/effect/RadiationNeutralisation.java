@@ -26,7 +26,7 @@ public class RadiationNeutralisation extends StatusEffect {
             if (entity.isPlayer()) {
 
                 for (String i: Quantum.new_radiation_types.keySet()) {
-                    RadiationData.delRad((IEntityDataSaver) entity, i, (int) (Math.random()*10*amplifier));
+                    RadiationData.delRad((IEntityDataSaver) entity, i, (int) (Math.random()*100*amplifier));
                 }
 
             }
