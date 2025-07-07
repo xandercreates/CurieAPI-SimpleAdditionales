@@ -29,7 +29,7 @@ public class Quantum implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     public static HashMap<String, JsonObject> radiation_data = new HashMap<>();
-
+    public static int cap = 100000;
     @Override
     public void onInitialize() {
         QuantumConfig.readConfig();
@@ -44,6 +44,8 @@ public class Quantum implements ModInitializer {
         ModMessages.registerS2CPackets();
 
         QuantumItems.registerItems();
+
+        QuantumRadiationTypes.registerRadiationTypes();
         LOGGER.info("Analyzing external dimensions...");
 
         ServerTickEvents.START_SERVER_TICK.register(new PlayerTickHandler());

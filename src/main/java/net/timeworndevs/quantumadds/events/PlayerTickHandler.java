@@ -1,44 +1,33 @@
 package net.timeworndevs.quantumadds.events;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.entity.EntityRenderDispatcher;
-import net.minecraft.client.render.entity.EntityRenderer;
-import net.minecraft.client.render.entity.PlayerEntityRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.Arm;
-import net.minecraft.util.math.random.Random;
 import net.timeworndevs.quantumadds.Quantum;
-import net.timeworndevs.quantumadds.effect.ModEffects;
+import net.timeworndevs.quantumadds.effect.QuantumEffects;
 import net.timeworndevs.quantumadds.util.IEntityDataSaver;
 
 import java.util.*;
-import java.util.function.Consumer;
-import java.util.function.Function;
 
 import static java.util.Map.entry;
+
 
 public class PlayerTickHandler implements ServerTickEvents.StartTick {
     private int tick = 0;
 
-
+    private final Random random = new Random();
     @FunctionalInterface
     public interface Action {
-        void activate(ServerPlayerEntity player, HashMap<String, Integer> rad);
+        void activate(ServerPlayerEntity player, HashMap<String, Double> rad);
     }
-    private Map<List<Double>, Action> actions = Map.ofEntries(
+    private final Map<List<Double>, Action> actions = Map.ofEntries(
             //([min_alpha, min_beta, min_gamma, min_neutron] -> effect
-
             // ALPHA RADIATION
             entry(List.of(.9,.0,.0,.0),(player,rad) ->  {
-                if (Math.random()<0.15) {
+                if (random.nextDouble() <0.15) {
                     addMutation(player);
                 } else {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 120, 6));
@@ -48,78 +37,78 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick {
                 player.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 40, 1));
             }),
             entry(List.of(.5,.0,.0,.0),(player,rad) ->  {
-                double r = Math.random();
-                if (r>0.5) {
+                double num = random.nextDouble();
+                if (num >0.5f) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 120, 2));   // 50% * 80%
-                } else if (r<0.25) {
+                } else if (num < 0.25f) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 120, 2));     // 25% * 80%
                 }
             }),
             entry(List.of(.1,.0,.0,.0),(player,rad) ->  {
-                if (Math.random()>0.9) {
+                if (random.nextDouble() > 0.9f) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 60, 1));        // 25%
                 }
             }),
 
             // BETA RADIATION
             entry(List.of(.0,.9,.0,.0),(player,rad) ->  {
-                double r = Math.random();
-                if (r>0.8) {
+                double num = random.nextDouble();
+                if (num > 0.8f) {
                     addMutation(player);
-                } else if (r>0.5) {
+                } else if (num > 0.5f) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 20, 6));
                 } else {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20, 6));
                 }
             }),
             entry(List.of(.0,.8,.0,.0),(player,rad) ->  {
-                double r = Math.random();
-                if (r>0.95) {
-                    player.addStatusEffect(new StatusEffectInstance(ModEffects.SKINFALLOFF, 40, 1));
-                } else if (r>0.9) {
+                double num = random.nextDouble();
+                if (num > 0.95f) {
+                    player.addStatusEffect(new StatusEffectInstance(QuantumEffects.SKIN_FALLOFF, 40, 1));
+                } else if (num > 0.9f) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 1200, 2));
                 }
             }),
             entry(List.of(.0,.5,.0,.0),(player,rad) ->  {
-                double r = Math.random();
-                if (r>0.5) {
+                double num = random.nextDouble();
+                if (num > 0.5f) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 120, 2));
-                } else if (r<0.15) {
+                } else if (num < 0.15f) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 120, 2));
                 }
             }),
             entry(List.of(.0,.1,.0,.0),(player,rad) ->  {
-                if (Math.random()>0.8) {
+                if (random.nextDouble() > 0.8f) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 60, 1));
                 }
             }),
 
             // GAMMA RADIATION
             entry(List.of(.0,.0,.0,.9),(player,rad) ->  {
-                if (Math.random()<0.98) {
+                if (random.nextDouble() <0.98f) {
                     addMutation(player);
                 } else {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 120, 6));
                 }
             }),
             entry(List.of(.0,.0,.0,.8),(player,rad) ->  {
-                double r = Math.random();
-                if (r>0.9) {
-                    player.addStatusEffect(new StatusEffectInstance(ModEffects.SKINFALLOFF, 40, 1));
-                } else if (r>0.8) {
+                double num = random.nextDouble();
+                if (num >0.9f) {
+                    player.addStatusEffect(new StatusEffectInstance(QuantumEffects.SKIN_FALLOFF, 40, 1));
+                } else if (num >0.8f) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 1200, 2));
                 }
             }),
             entry(List.of(.0,.0,.0,.5),(player,rad) ->  {
-                double r = Math.random();
-                if (r>0.5) {
+                double num = random.nextDouble();
+                if (num > 0.5f) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 120, 2));
-                } else if (r<0.25) {
+                } else if (num < 0.25f) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 120, 2));
                 }
             }),
             entry(List.of(.0,.0,.0,.1),(player,rad) ->  {
-                if (Math.random()>0.8) {
+                if (random.nextDouble() > 0.8f) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 60, 1));
                 }
             }),
@@ -129,23 +118,23 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick {
                 addMutation(player);
             }),
             entry(List.of(.8,.5,.3,.1),(player,rad) ->  {
-                double r = Math.random();
-                if (r>0.6) {
-                    player.addStatusEffect(new StatusEffectInstance(ModEffects.SKINFALLOFF, 40, 1));
-                } else if (r>0.2) {
+                double num = random.nextDouble();
+                if (num > 0.6f) {
+                    player.addStatusEffect(new StatusEffectInstance(QuantumEffects.SKIN_FALLOFF, 40, 1));
+                } else if (num > 0.2f) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 1200, 2));
                 }
             }),
             entry(List.of(.5,.5,.5,.5),(player,rad) ->  {
-                double r = Math.random();
-                if (r>0.5) {
+                double num = random.nextDouble();
+                if (num > 0.5f) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 120, 2));
-                } else if (r<0.4) {
+                } else if (num < 0.4f) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 120, 2));
                 }
             }),
             entry(List.of(.1,.1,.1,.1),(player,rad) ->  {
-                if (Math.random()>0.65) {
+                if (random.nextDouble() > 0.65) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 60, 1));
                 }
             })
@@ -155,16 +144,17 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick {
     public void onStartTick(MinecraftServer server) {
         if (tick >= 20) {
             for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
-                int cur_alpha = ((IEntityDataSaver) player).getPersistentData().getInt("radiation.alpha");
-                int cur_beta = ((IEntityDataSaver) player).getPersistentData().getInt("radiation.beta");
-                int cur_gamma = ((IEntityDataSaver) player).getPersistentData().getInt("radiation.gamma");
-                int cur_neutron = ((IEntityDataSaver) player).getPersistentData().getInt("radiation.neutron");
+                NbtCompound persistentData = ((IEntityDataSaver) player).getPersistentData();
+                double cur_alpha = (double) persistentData.getInt("radiation.alpha") / Quantum.cap;
+                double cur_beta = (double) persistentData.getInt("radiation.beta") / Quantum.cap;
+                double cur_gamma = (double) persistentData.getInt("radiation.gamma") / Quantum.cap;
+                double cur_neutron = (double) persistentData.getInt("radiation.neutron") / Quantum.cap;
 
-                HashMap<String, Integer> rad = new HashMap<>();
-                rad.put("alpha", cur_alpha/Quantum.cap);
-                rad.put("beta", cur_beta/Quantum.cap);
-                rad.put("gamma", cur_gamma/Quantum.cap);
-                rad.put("neutron", cur_neutron/Quantum.cap);
+                HashMap<String, Double> rad = new HashMap<>();
+                rad.put("alpha", cur_alpha);
+                rad.put("beta", cur_beta);
+                rad.put("gamma", cur_gamma);
+                rad.put("neutron", cur_neutron);
                 for (List<Double> k : actions.keySet()) {
                     if (cur_alpha > k.get(0) && cur_beta > k.get(1) && cur_gamma > k.get(2) && cur_neutron > k.get(3)) {
                         actions.get(k).activate(player, rad);
@@ -172,7 +162,6 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick {
                 }
             }
             tick = 0;
-
         }
         tick++;
 
@@ -202,7 +191,7 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick {
             ));
     private void addMutation(ServerPlayerEntity player) {
 
-        mutations.get((int) (Math.random() * mutations.size())).mutate(player);
+        mutations.get(random.nextInt(mutations.size())).mutate(player);
     }
 }
 

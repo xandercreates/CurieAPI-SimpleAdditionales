@@ -5,9 +5,7 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.Identifier;
 import net.timeworndevs.quantumadds.Quantum;
-import net.timeworndevs.quantumadds.networking.ModMessages;
 import net.timeworndevs.quantumadds.util.IEntityDataSaver;
 
 public class RadiationData {
@@ -15,7 +13,7 @@ public class RadiationData {
         NbtCompound nbt = player.getPersistentData();
         int rad = nbt.getInt("radiation."+type.getName());
 
-        rad = Math.min(rad + amount, 10000);
+        rad = Math.min(rad + amount, Quantum.cap);
         nbt.putInt("radiation."+type.getName(), rad);
         syncRad(rad, type, (ServerPlayerEntity) player);
     }
