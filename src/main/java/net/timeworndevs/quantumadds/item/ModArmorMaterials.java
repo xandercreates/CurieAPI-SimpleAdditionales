@@ -5,6 +5,7 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.timeworndevs.quantumadds.Quantum;
+import net.timeworndevs.quantumadds.registries.QuantumItems;
 
 import java.util.function.Supplier;
 
@@ -12,11 +13,11 @@ public enum ModArmorMaterials implements ArmorMaterial {
     HAZMATD("hazmatd", 5, new int[] {3, 5, 4, 2}, 5, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
             2f, 0.1f, () -> Ingredient.ofItems(Items.LEATHER)),
     HAZMATC("hazmatc", 5, new int[] {4, 6, 5, 3}, 6, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN,
-            3f, 0.2f, () -> Ingredient.ofItems(ModItems.RUBBER)),
+            3f, 0.2f, () -> Ingredient.ofItems(QuantumItems.RUBBER)),
     HAZMATB("hazmatb", 5, new int[] {6, 8, 6, 5}, 8, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN,
-            4f, 0.4f, () -> Ingredient.ofItems(ModItems.RUBBER)),
+            4f, 0.4f, () -> Ingredient.ofItems(QuantumItems.RUBBER)),
     HAZMATA("hazmata", 5, new int[] {8, 10, 7, 6}, 12, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            6f, 0.8f, () -> Ingredient.ofItems(ModItems.PVC));
+            6f, 0.8f, () -> Ingredient.ofItems(QuantumItems.PVC));
 
     private final String name;
     private final int durabilityMultiplier;

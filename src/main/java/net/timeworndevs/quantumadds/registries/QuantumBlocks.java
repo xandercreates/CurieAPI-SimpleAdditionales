@@ -1,23 +1,31 @@
-package net.timeworndevs.quantumadds.block;
+package net.timeworndevs.quantumadds.registries;
 
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.timeworndevs.quantumadds.Quantum;
+import net.timeworndevs.quantumadds.block.HeavyTungstenBlock;
+import net.timeworndevs.quantumadds.block.ReactorCore;
 
-public class ModBlocks {
+import java.util.ArrayList;
 
+public class QuantumBlocks {
+    private static final ArrayList<Block> BLOCKS = new ArrayList<>();
     public static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
+        BLOCKS.add(block);
         return Registry.register(Registries.BLOCK, new Identifier(Quantum.MOD_ID, name), block);
     }
 
@@ -36,25 +44,19 @@ public class ModBlocks {
 
     public static final Block REACTOR_CORE = registerBlock("reactor_core", new ReactorCore(FabricBlockSettings.create().strength(8f).nonOpaque().luminance(4)));
 
-    public static Item registerBlockItem(String name, Block block) {
-        return Registry.register(Registries.ITEM, new Identifier(Quantum.MOD_ID, name), new BlockItem(block, new FabricItemSettings()));
+    public static void registerBlockItem(String name, Block block) {
+        Registry.register(Registries.ITEM, new Identifier(Quantum.MOD_ID, name), new BlockItem(block, new FabricItemSettings()));
     }
 
-    private static void creativeEntries(FabricItemGroupEntries entries) {
+    public static final ItemGroup BUILDING_BLOCKS = FabricItemGroup.builder()
+            .icon(() -> new ItemStack(NUCLEAR_WASTE))
+            .displayName(Text.translatable("itemGroup.quantumadds.building_blocks"))
+            .entries((context, entries) -> {
+                for (Block block : BLOCKS) {
+                    entries.add(block);
+                }
+            })
+            .build();
 
-        entries.add(METEORITE_ROCK);
-        entries.add(NUCLEAR_WASTE);
-        entries.add(REACTOR_CORE);
-        entries.add(TUNGSTEN_BLOCK);
-        entries.add(TUNGSTEN_ORE);
-        entries.add(DEEPSLATE_TUNGSTEN_ORE);
-        entries.add(TUNGSTEN_BLOCK);
-        entries.add(HEAVY_TUNGSTEN_BLOCK);
-
-    }
-    public static void registerBlockItems() {
-        ItemGroupEvents.modifyEntriesEvent(RegistryKey.of(Registries.ITEM_GROUP.getKey(), new Identifier(Quantum.MOD_ID, "building_blocks"))).register(ModBlocks::creativeEntries);
-    }
     public static void registerBlocks() {}
-
 }

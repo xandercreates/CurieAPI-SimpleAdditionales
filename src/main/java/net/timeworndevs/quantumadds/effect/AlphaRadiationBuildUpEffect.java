@@ -12,7 +12,6 @@ public class AlphaRadiationBuildUpEffect extends StatusEffect {
         super(category, color);
     }
 
-
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         if (!entity.getWorld().isClient()) {

@@ -1,6 +1,6 @@
 package net.timeworndevs.quantumadds.world.biome.surface;
 
-import net.timeworndevs.quantumadds.block.ModBlocks;
+import net.timeworndevs.quantumadds.registries.QuantumBlocks;
 import net.timeworndevs.quantumadds.world.biome.ModBiomes;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -9,8 +9,8 @@ import net.minecraft.world.gen.surfacebuilder.MaterialRules;
 public class ModMaterialRules {
     private static final MaterialRules.MaterialRule DIRT = makeStateRule(Blocks.DIRT);
     private static final MaterialRules.MaterialRule GRASS_BLOCK = makeStateRule(Blocks.GRASS_BLOCK);
-    private static final MaterialRules.MaterialRule RAW_X = makeStateRule(ModBlocks.NUCLEAR_WASTE);
-    private static final MaterialRules.MaterialRule METEORITE = makeStateRule(ModBlocks.METEORITE_ROCK); // - X is a placeholder dw im not implementing twitter ore
+    private static final MaterialRules.MaterialRule RAW_X = makeStateRule(QuantumBlocks.NUCLEAR_WASTE);
+    private static final MaterialRules.MaterialRule METEORITE = makeStateRule(QuantumBlocks.METEORITE_ROCK); // - X is a placeholder dw im not implementing twitter ore
 
     public static MaterialRules.MaterialRule makeRules() {
         MaterialRules.MaterialCondition isAtOrAboveWaterLevel = MaterialRules.water(-1, 0);

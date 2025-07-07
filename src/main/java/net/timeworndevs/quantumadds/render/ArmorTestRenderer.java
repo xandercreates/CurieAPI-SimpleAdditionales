@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 import net.timeworndevs.quantumadds.QuantumClient;
 import net.timeworndevs.quantumadds.compat.FiguraCompat;
 import net.timeworndevs.quantumadds.item.HazmatSuitItem;
-import net.timeworndevs.quantumadds.item.ModItems;
+import net.timeworndevs.quantumadds.registries.QuantumItems;
 
 
 public class ArmorTestRenderer {
@@ -36,6 +36,6 @@ public class ArmorTestRenderer {
                 renderPart(matrices, vertexConsumers, light, stack, model, texture);
             }
         };
-        ArmorRenderer.register(renderer, ModItems.allArmors);
+        ArmorRenderer.register(renderer, QuantumItems.allArmors);
     }
 }

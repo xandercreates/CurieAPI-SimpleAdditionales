@@ -20,7 +20,6 @@ public class SkinFalloffEffect extends StatusEffect {
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         if (!entity.getWorld().isClient()) {
-
             if (entity.isUsingItem() && Math.random()<0.02) {
                 entity.stopUsingItem();
             }

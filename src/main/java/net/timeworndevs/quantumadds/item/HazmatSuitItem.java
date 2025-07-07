@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.timeworndevs.quantumadds.Quantum;
 import net.timeworndevs.quantumadds.QuantumClient;
+import net.timeworndevs.quantumadds.entities.client.QuantumModelLayers;
 import net.timeworndevs.quantumadds.item.Armors.FullArmorModel;
 import org.jetbrains.annotations.NotNull;
 
@@ -26,7 +27,6 @@ public class HazmatSuitItem extends ArmorItem {
         texture_feet = "textures/armor/" + texture + "_suit_feet.png";
         texture_rest = "textures/armor/" + texture + "_suit_main.png";
     }
-
 
     @Override
     public ItemStack getDefaultStack() {
@@ -53,8 +53,8 @@ public class HazmatSuitItem extends ArmorItem {
 
         var models = MinecraftClient.getInstance().getEntityModelLoader();
 
-        var feet = models.getModelPart(QuantumClient.HAZMAT_A_FEET_LAYER);
-        var root = models.getModelPart(QuantumClient.HAZMAT_A_MAIN_LAYER);
+        var feet = models.getModelPart(QuantumModelLayers.HAZMAT_A_FEET_LAYER);
+        var root = models.getModelPart(QuantumModelLayers.HAZMAT_A_MAIN_LAYER);
         if (slot == EquipmentSlot.FEET) {
             return new FullArmorModel(feet, slot);
         } else {

@@ -8,12 +8,12 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.timeworndevs.quantumadds.Quantum;
-import net.timeworndevs.quantumadds.entities.custom.MonstrocityEntity;
+import net.timeworndevs.quantumadds.entities.custom.MonstrosityEntity;
 
 public class ModEntities {
-    public static EntityType<MonstrocityEntity> MONSTROCITY = Registry.register(Registries.ENTITY_TYPE,
+    public static EntityType<MonstrosityEntity> MONSTROCITY = Registry.register(Registries.ENTITY_TYPE,
             new Identifier(Quantum.MOD_ID, "monstrocity"),
-            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, MonstrocityEntity::new).dimensions(EntityDimensions.fixed(1f, 1f)).build());
+            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, MonstrosityEntity::new).dimensions(EntityDimensions.fixed(1f, 1f)).build());
     
     public static void registerModEntities() {
 

@@ -10,9 +10,9 @@ import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.MathHelper;
 import net.timeworndevs.quantumadds.entities.animation.ModAnimations;
-import net.timeworndevs.quantumadds.entities.custom.MonstrocityEntity;
+import net.timeworndevs.quantumadds.entities.custom.MonstrosityEntity;
 
-public class GooberModel<T extends MonstrocityEntity> extends SinglePartEntityModel<T> {
+public class GooberModel<T extends MonstrosityEntity> extends SinglePartEntityModel<T> {
 	private final ModelPart Root;
 	private final ModelPart Body;
     private final ModelPart LeftFrontLeg1;

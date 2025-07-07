@@ -4,10 +4,11 @@ package net.timeworndevs.quantumadds.effect;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
-import net.minecraft.entity.player.PlayerEntity;
 import net.timeworndevs.quantumadds.Quantum;
+import net.timeworndevs.quantumadds.radiation.RadiationType;
+import net.timeworndevs.quantumadds.registries.QuantumRadiationTypes;
 import net.timeworndevs.quantumadds.util.IEntityDataSaver;
-import net.timeworndevs.quantumadds.util.RadiationData;
+import net.timeworndevs.quantumadds.radiation.RadiationData;
 
 public class RadiationNeutralisation extends StatusEffect {
 
@@ -24,11 +25,9 @@ public class RadiationNeutralisation extends StatusEffect {
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         if (!entity.getWorld().isClient()) {
             if (entity.isPlayer()) {
-
-                for (String i: Quantum.new_radiation_types.keySet()) {
-                    RadiationData.delRad((IEntityDataSaver) entity, i, (int) (Math.random()*100*amplifier));
+                for (RadiationType type : QuantumRadiationTypes.RADIATION_TYPES.values()) {
+                    RadiationData.delRad((IEntityDataSaver) entity, type, (int) (Math.random() * 10* amplifier));
                 }
-
             }
         }
         super.applyUpdateEffect(entity, amplifier);

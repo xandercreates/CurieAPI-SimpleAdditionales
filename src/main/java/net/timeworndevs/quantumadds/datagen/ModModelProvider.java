@@ -6,8 +6,8 @@ import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
-import net.timeworndevs.quantumadds.block.ModBlocks;
-import net.timeworndevs.quantumadds.item.ModItems;
+import net.timeworndevs.quantumadds.registries.QuantumBlocks;
+import net.timeworndevs.quantumadds.registries.QuantumItems;
 
 public class ModModelProvider extends FabricModelProvider {
 
@@ -17,16 +17,16 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.TUNGSTEN_ORE);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_TUNGSTEN_ORE);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.TUNGSTEN_BLOCK);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.PLUTONIUM_ORE);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_PLUTONIUM_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(QuantumBlocks.TUNGSTEN_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(QuantumBlocks.DEEPSLATE_TUNGSTEN_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(QuantumBlocks.TUNGSTEN_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(QuantumBlocks.PLUTONIUM_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(QuantumBlocks.DEEPSLATE_PLUTONIUM_ORE);
     }
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        for (Item item : ModItems.allArmors) {
+        for (Item item : QuantumItems.allArmors) {
             itemModelGenerator.registerArmor((ArmorItem) item);
         }
     }

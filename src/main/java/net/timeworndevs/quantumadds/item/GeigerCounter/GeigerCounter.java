@@ -2,21 +2,15 @@ package net.timeworndevs.quantumadds.item.GeigerCounter;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.minecraft.block.BlockState;
-import net.minecraft.client.network.ClientPlayerEntity;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -25,15 +19,15 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.LightType;
 import net.minecraft.world.RaycastContext;
-import net.minecraft.world.World;
 import net.timeworndevs.quantumadds.Quantum;
+import net.timeworndevs.quantumadds.registries.QuantumRadiationTypes;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
+
+import static net.timeworndevs.quantumadds.registries.QuantumRadiationTypes.RADIATION_TYPES;
 
 public class GeigerCounter extends Item {
 
@@ -48,21 +42,22 @@ public class GeigerCounter extends Item {
         if ((ctx.getHand().equals(Hand.MAIN_HAND) && !ctx.getPlayer().getOffHandStack().isEmpty()) || (ctx.getHand().equals(Hand.OFF_HAND) && !ctx.getPlayer().getMainHandStack().isEmpty())) {
           int radiationFromItems = 0;
           if (Quantum.radiation_data!=null) {
-              for (String key : Quantum.radiation_data.keySet()) {
-                  JsonObject curr = Quantum.radiation_data.get(key);
-                  if (curr.has("items")) {
-                      for (JsonElement element : curr.get("items").getAsJsonArray()) {
-                          if (!Objects.equals(Registries.ITEM.get(new Identifier(element.getAsJsonObject().get("object").getAsString())).toString(), "minecraft:air")) {
+              for (JsonObject value : Quantum.radiation_data.values()) {
+                  if (value.has("items")) {
+                      for (JsonElement element : value.get("items").getAsJsonArray()) {
+                          JsonObject entry = element.getAsJsonObject();
+
+                          if (!Items.AIR.equals(Registries.ITEM.get(new Identifier(entry.get("object").getAsString())))) {
                               Item item;
                               if (ctx.getHand().equals(Hand.MAIN_HAND)) {
                                   item = ctx.getPlayer().getInventory().offHand.get(0).getItem();
                               } else {
                                   item = ctx.getPlayer().getInventory().getMainHandStack().getItem();
                               }
-                              if (Registries.ITEM.get(new Identifier(element.getAsJsonObject().get("object").getAsString())) == item) {
-                                  for (String kind : Quantum.new_radiation_types.keySet()) {
-                                      if (element.getAsJsonObject().has(kind)) {
-                                          radiationFromItems += element.getAsJsonObject().get(kind).getAsInt() * item.getDefaultStack().getCount();
+                              if (Registries.ITEM.get(new Identifier(entry.get("object").getAsString())) == item) {
+                                  for (String kind : RADIATION_TYPES.keySet()) {
+                                      if (entry.has(kind)) {
+                                          radiationFromItems += entry.get(kind).getAsInt() * item.getDefaultStack().getCount();
                                       }
                                   }
                               }
@@ -83,24 +78,21 @@ public class GeigerCounter extends Item {
             float biomeMultiplier = 0;
             String biome = ctx.getWorld().getBiome(ctx.getPlayer().getBlockPos()).getKey().toString().replace("Optional[ResourceKey[minecraft:worldgen/biome / ", "").replace("]]", ""); // I'm the worst dev hello there for doing that
             if (Quantum.radiation_data != null) {
-                for (String key : Quantum.radiation_data.keySet()) {
-                    JsonObject curr = Quantum.radiation_data.get(key);
-                    if (curr.has("biomes")) {
-                        for (JsonElement element : curr.get("biomes").getAsJsonArray()) {
+                for (JsonObject value : Quantum.radiation_data.values()) {
+                    if (value.has("biomes")) {
+                        for (JsonElement element : value.get("biomes").getAsJsonArray()) {
                             if (Objects.equals(biome, element.getAsJsonObject().get("object").getAsString())) {
-                                for (String kind : Quantum.new_radiation_types.keySet()) {
+                                for (String kind : RADIATION_TYPES.keySet()) {
                                     if (element.getAsJsonObject().has(kind)) {
                                         biomeMultiplier += element.getAsJsonObject().get(kind).getAsInt();
                                     }
                                 }
                             }
-                            //loop trough jsons and check block, correct radiation level and radiation type... instead of blindly hard coding that
-
                         }
                     }
                     biomeMultiplier = biomeMultiplier * (ctx.getWorld().getLightLevel(LightType.SKY, ctx.getPlayer().getBlockPos()) / (float) 15);
 
-                    for (String kind : Quantum.new_radiation_types.keySet()) {
+                    for (String kind : RADIATION_TYPES.keySet()) {
                         radiationAround += calculateBlockRadiation(ctx.getPlayer(), kind);
                     }
                 }
@@ -111,15 +103,6 @@ public class GeigerCounter extends Item {
         return ActionResult.SUCCESS;
     }
 
-
-
-
-
-
-
-
-
-
     private static BlockHitResult raycastInsulator(RaycastContext context, Predicate<BlockState> statePredicate, BlockPos ignored, PlayerEntity player) {
         return BlockView.raycast(context.getStart(), context.getEnd(), context, (innerContext, pos) -> {
             if (pos.equals(ignored)) {
@@ -127,12 +110,12 @@ public class GeigerCounter extends Item {
             }
             Vec3d vec3d = innerContext.getStart();
             Vec3d vec3d2 = innerContext.getEnd();
-            BlockState blockState = player.getWorld().getBlockState((BlockPos)pos);
+            BlockState blockState = player.getWorld().getBlockState(pos);
             if (! statePredicate.test(blockState)) {
                 return null;
             }
-            VoxelShape voxelShape = innerContext.getBlockShape(blockState, player.getWorld(), (BlockPos)pos);
-            return player.getWorld().raycastBlock(vec3d, vec3d2, (BlockPos)pos, voxelShape, blockState);
+            VoxelShape voxelShape = innerContext.getBlockShape(blockState, player.getWorld(), pos);
+            return player.getWorld().raycastBlock(vec3d, vec3d2, pos, voxelShape, blockState);
 
         }, innerContext -> {
             Vec3d vec3d = innerContext.getStart().subtract(innerContext.getEnd());
@@ -148,7 +131,7 @@ public class GeigerCounter extends Item {
         end = (blockPos).toCenterPos();
 
         //Find list of insulators from configs and put into hashmap for easier use
-        HashMap<String, Integer> insulators = new HashMap<String, Integer>();
+        HashMap<String, Integer> insulators = new HashMap<>();
         if (Quantum.radiation_data!=null) {
             for (String key: Quantum.radiation_data.keySet()) {
                 JsonObject curr = Quantum.radiation_data.get(key);
@@ -161,7 +144,6 @@ public class GeigerCounter extends Item {
                 }
             }
         }
-
 
         boolean reachedEnd = false;
         BlockPos lastBlockPos = null;

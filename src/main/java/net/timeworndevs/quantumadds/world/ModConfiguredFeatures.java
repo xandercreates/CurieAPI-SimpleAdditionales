@@ -12,7 +12,7 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.timeworndevs.quantumadds.Quantum;
-import net.timeworndevs.quantumadds.block.ModBlocks;
+import net.timeworndevs.quantumadds.registries.QuantumBlocks;
 
 import java.util.List;
 
@@ -26,14 +26,14 @@ public class ModConfiguredFeatures {
         RuleTest deepslateReplecables = new TagMatchRuleTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
 
         List<OreFeatureConfig.Target> overworldPlutoniumOres =
-                List.of(OreFeatureConfig.createTarget(stoneReplecables, ModBlocks.PLUTONIUM_ORE.getDefaultState()),
-                        OreFeatureConfig.createTarget(deepslateReplecables, ModBlocks.DEEPSLATE_PLUTONIUM_ORE.getDefaultState()));
+                List.of(OreFeatureConfig.createTarget(stoneReplecables, QuantumBlocks.PLUTONIUM_ORE.getDefaultState()),
+                        OreFeatureConfig.createTarget(deepslateReplecables, QuantumBlocks.DEEPSLATE_PLUTONIUM_ORE.getDefaultState()));
 
         register(context, PLUTONIUM_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldPlutoniumOres, 4));
 
         List<OreFeatureConfig.Target> overworldTungstenOres =
-                List.of(OreFeatureConfig.createTarget(stoneReplecables, ModBlocks.TUNGSTEN_ORE.getDefaultState()),
-                        OreFeatureConfig.createTarget(deepslateReplecables, ModBlocks.DEEPSLATE_TUNGSTEN_ORE.getDefaultState()));
+                List.of(OreFeatureConfig.createTarget(stoneReplecables, QuantumBlocks.TUNGSTEN_ORE.getDefaultState()),
+                        OreFeatureConfig.createTarget(deepslateReplecables, QuantumBlocks.DEEPSLATE_TUNGSTEN_ORE.getDefaultState()));
 
         register(context, TUNGSTEN_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldPlutoniumOres, 6));
 
