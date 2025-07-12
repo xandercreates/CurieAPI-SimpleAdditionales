@@ -31,9 +31,9 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick {
 
     @FunctionalInterface
     public interface Action {
-        void activate(ServerPlayerEntity player, HashMap<String, Integer> rad);
+        void activate(ServerPlayerEntity player, HashMap<String, Double> rad);
     }
-    private Map<List<Double>, Action> actions = Map.ofEntries(
+    private final Map<List<Double>, Action> actions = Map.ofEntries(
             //([min_alpha, min_beta, min_gamma, min_neutron] -> effect
 
             // ALPHA RADIATION
@@ -155,16 +155,16 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick {
     public void onStartTick(MinecraftServer server) {
         if (tick >= 20) {
             for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
-                int cur_alpha = ((IEntityDataSaver) player).getPersistentData().getInt("radiation.alpha");
-                int cur_beta = ((IEntityDataSaver) player).getPersistentData().getInt("radiation.beta");
-                int cur_gamma = ((IEntityDataSaver) player).getPersistentData().getInt("radiation.gamma");
-                int cur_neutron = ((IEntityDataSaver) player).getPersistentData().getInt("radiation.neutron");
+                double cur_alpha = ((double) ((IEntityDataSaver) player).getPersistentData().getInt("radiation.alpha")) / (double) Quantum.cap;
+                double cur_beta = (double) ((IEntityDataSaver) player).getPersistentData().getInt("radiation.beta") /(double) Quantum.cap;
+                double cur_gamma = (double) ((IEntityDataSaver) player).getPersistentData().getInt("radiation.gamma") /(double) Quantum.cap;
+                double cur_neutron = (double) ((IEntityDataSaver) player).getPersistentData().getInt("radiation.neutron") /(double) Quantum.cap;
 
-                HashMap<String, Integer> rad = new HashMap<>();
-                rad.put("alpha", cur_alpha/Quantum.cap);
-                rad.put("beta", cur_beta/Quantum.cap);
-                rad.put("gamma", cur_gamma/Quantum.cap);
-                rad.put("neutron", cur_neutron/Quantum.cap);
+                HashMap<String, Double> rad = new HashMap<>();
+                rad.put("alpha", cur_alpha);
+                rad.put("beta", cur_beta);
+                rad.put("gamma", cur_gamma);
+                rad.put("neutron", cur_neutron);
                 for (List<Double> k : actions.keySet()) {
                     if (cur_alpha > k.get(0) && cur_beta > k.get(1) && cur_gamma > k.get(2) && cur_neutron > k.get(3)) {
                         actions.get(k).activate(player, rad);
