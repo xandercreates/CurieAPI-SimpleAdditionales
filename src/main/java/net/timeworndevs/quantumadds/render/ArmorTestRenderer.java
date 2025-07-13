@@ -11,7 +11,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import net.timeworndevs.quantumadds.QuantumClient;
+import net.timeworndevs.quantumadds.QuantumAddsClient;
 import net.timeworndevs.quantumadds.compat.FiguraCompat;
 import net.timeworndevs.quantumadds.item.HazmatSuitItem;
 import net.timeworndevs.quantumadds.registries.QuantumItems;
@@ -30,7 +30,7 @@ public class ArmorTestRenderer {
             HazmatSuitItem armor = (HazmatSuitItem) stack.getItem();
             var model = armor.getArmorModel(stack.getItem());
             var texture = armor.getArmorTexture(slot);
-            boolean shouldRender = !(entity instanceof PlayerEntity) || !QuantumClient.isFiguraLoaded || FiguraCompat.renderArmorPart((PlayerEntity) entity, slot);
+            boolean shouldRender = !(entity instanceof PlayerEntity) || !QuantumAddsClient.isFiguraLoaded || FiguraCompat.renderArmorPart((PlayerEntity) entity, slot);
             if (shouldRender) {
                 contextModel.copyBipedStateTo(model);
                 renderPart(matrices, vertexConsumers, light, stack, model, texture);

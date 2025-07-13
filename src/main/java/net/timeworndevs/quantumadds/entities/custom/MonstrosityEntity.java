@@ -15,15 +15,16 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
+import net.timeworndevs.quantum.util.IEntityDataSaver;
 import net.timeworndevs.quantumadds.entities.ModEntities;
-import net.timeworndevs.quantumadds.radiation.RadiationType;
-import net.timeworndevs.quantumadds.util.IEntityDataSaver;
-import net.timeworndevs.quantumadds.radiation.RadiationData;
+import net.timeworndevs.quantum.radiation.RadiationType;
+import net.timeworndevs.quantum.radiation.RadiationData;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 
-import static net.timeworndevs.quantumadds.registries.QuantumRadiationTypes.RADIATION_TYPES;
+import static net.timeworndevs.quantum.radiation.RadiationType.RADIATION_TYPES;
+
 
 public class MonstrosityEntity extends AnimalEntity {
 

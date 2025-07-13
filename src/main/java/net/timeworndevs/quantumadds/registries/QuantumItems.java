@@ -3,12 +3,12 @@ package net.timeworndevs.quantumadds.registries;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.*;
 import net.minecraft.text.Text;
+import net.timeworndevs.quantumadds.QuantumAdds;
 import net.timeworndevs.quantumadds.item.GeigerCounter.GeigerCounter;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.timeworndevs.quantumadds.Quantum;
 import net.minecraft.util.Rarity;
 import net.timeworndevs.quantumadds.item.HazmatSuitItem;
 import net.timeworndevs.quantumadds.item.ModArmorMaterials;
@@ -58,7 +58,7 @@ public class QuantumItems {
     public static Item PVC = registerItem("pvc", new Item(new FabricItemSettings()));
 
     private static Item registerItem(String name, Item item) {
-        return Registry.register(Registries.ITEM, new Identifier(Quantum.MOD_ID, name), item);
+        return Registry.register(Registries.ITEM, new Identifier(QuantumAdds.MOD_ID, name), item);
     }
 
     public static void registerItems() {}

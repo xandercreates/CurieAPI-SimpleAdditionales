@@ -4,14 +4,16 @@ package net.timeworndevs.quantumadds.effect;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
-import net.timeworndevs.quantumadds.Quantum;
-import net.timeworndevs.quantumadds.radiation.RadiationType;
-import net.timeworndevs.quantumadds.registries.QuantumRadiationTypes;
-import net.timeworndevs.quantumadds.util.IEntityDataSaver;
-import net.timeworndevs.quantumadds.radiation.RadiationData;
+import net.timeworndevs.quantum.radiation.RadiationData;
+import net.timeworndevs.quantum.radiation.RadiationType;
+import net.timeworndevs.quantum.util.IEntityDataSaver;
+
+import java.util.Random;
+
+import static net.timeworndevs.quantum.radiation.RadiationType.RADIATION_TYPES;
 
 public class RadiationNeutralisation extends StatusEffect {
-
+    private static final Random random = new Random();
     protected RadiationNeutralisation(StatusEffectCategory category, int color) {
         super(category, color);
     }
@@ -25,8 +27,8 @@ public class RadiationNeutralisation extends StatusEffect {
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         if (!entity.getWorld().isClient()) {
             if (entity.isPlayer()) {
-                for (RadiationType type : QuantumRadiationTypes.RADIATION_TYPES.values()) {
-                    RadiationData.delRad((IEntityDataSaver) entity, type, (int) (Math.random() * 10* amplifier));
+                for (RadiationType type : RADIATION_TYPES.values()) {
+                    RadiationData.delRad((IEntityDataSaver) entity, type, random.nextInt(25) * amplifier);
                 }
             }
         }

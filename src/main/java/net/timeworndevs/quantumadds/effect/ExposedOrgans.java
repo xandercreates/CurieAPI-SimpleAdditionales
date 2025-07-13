@@ -3,13 +3,14 @@ package net.timeworndevs.quantumadds.effect;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
-import net.timeworndevs.quantumadds.radiation.RadiationType;
-import net.timeworndevs.quantumadds.util.IEntityDataSaver;
-import net.timeworndevs.quantumadds.radiation.RadiationData;
+import net.timeworndevs.quantum.radiation.RadiationData;
+import net.timeworndevs.quantum.radiation.RadiationType;
+import net.timeworndevs.quantum.util.IEntityDataSaver;
 
 import java.util.ArrayList;
 import java.util.Random;
-import static net.timeworndevs.quantumadds.registries.QuantumRadiationTypes.RADIATION_TYPES;
+
+import static net.timeworndevs.quantum.radiation.RadiationType.RADIATION_TYPES;
 
 public class ExposedOrgans extends StatusEffect {
 

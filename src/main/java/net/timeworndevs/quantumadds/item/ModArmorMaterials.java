@@ -4,7 +4,7 @@ import net.minecraft.item.*;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.timeworndevs.quantumadds.Quantum;
+import net.timeworndevs.quantumadds.QuantumAdds;
 import net.timeworndevs.quantumadds.registries.QuantumItems;
 
 import java.util.function.Supplier;
@@ -69,7 +69,7 @@ public enum ModArmorMaterials implements ArmorMaterial {
 
     @Override
     public String getName() {
-        return Quantum.MOD_ID + ":" + this.name;
+        return QuantumAdds.MOD_ID + ":" + this.name;
     }
 
     @Override

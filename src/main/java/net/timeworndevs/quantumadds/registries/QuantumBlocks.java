@@ -3,8 +3,7 @@ package net.timeworndevs.quantumadds.registries;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
@@ -12,21 +11,21 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import net.timeworndevs.quantumadds.Quantum;
+import net.timeworndevs.quantumadds.QuantumAdds;
 import net.timeworndevs.quantumadds.block.HeavyTungstenBlock;
 import net.timeworndevs.quantumadds.block.ReactorCore;
 
 import java.util.ArrayList;
 
 public class QuantumBlocks {
+
     private static final ArrayList<Block> BLOCKS = new ArrayList<>();
     public static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
         BLOCKS.add(block);
-        return Registry.register(Registries.BLOCK, new Identifier(Quantum.MOD_ID, name), block);
+        return Registry.register(Registries.BLOCK, new Identifier(QuantumAdds.MOD_ID, name), block);
     }
 
     public static final Block TUNGSTEN_ORE = registerBlock("tungsten_ore", new Block(FabricBlockSettings.create().strength(4.5f)));
@@ -45,7 +44,7 @@ public class QuantumBlocks {
     public static final Block REACTOR_CORE = registerBlock("reactor_core", new ReactorCore(FabricBlockSettings.create().strength(8f).nonOpaque().luminance(4)));
 
     public static void registerBlockItem(String name, Block block) {
-        Registry.register(Registries.ITEM, new Identifier(Quantum.MOD_ID, name), new BlockItem(block, new FabricItemSettings()));
+        Registry.register(Registries.ITEM, new Identifier(QuantumAdds.MOD_ID, name), new BlockItem(block, new FabricItemSettings()));
     }
 
     public static final ItemGroup BUILDING_BLOCKS = FabricItemGroup.builder()

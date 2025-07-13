@@ -1,6 +1,6 @@
 package net.timeworndevs.quantumadds.world.biome;
 
-import net.timeworndevs.quantumadds.Quantum;
+import net.timeworndevs.quantumadds.QuantumAdds;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registerable;
@@ -17,7 +17,7 @@ import net.timeworndevs.quantumadds.entities.ModEntities;
 
 public class ModBiomes {
     public static RegistryKey<Biome> RADIATION_TEST = RegistryKey.of(RegistryKeys.BIOME,
-            new Identifier(Quantum.MOD_ID, "tomb_world"));
+            new Identifier(QuantumAdds.MOD_ID, "tomb_world"));
 
     public static void boostrap(Registerable<Biome> context)
     {

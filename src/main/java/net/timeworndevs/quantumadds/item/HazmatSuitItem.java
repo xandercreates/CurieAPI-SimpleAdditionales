@@ -11,8 +11,7 @@ import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import net.timeworndevs.quantumadds.Quantum;
-import net.timeworndevs.quantumadds.QuantumClient;
+import net.timeworndevs.quantumadds.QuantumAdds;
 import net.timeworndevs.quantumadds.entities.client.QuantumModelLayers;
 import net.timeworndevs.quantumadds.item.Armors.FullArmorModel;
 import org.jetbrains.annotations.NotNull;
@@ -73,9 +72,9 @@ public class HazmatSuitItem extends ArmorItem {
     @NotNull
     public Identifier getArmorTexture(EquipmentSlot slot) {
         if (slot == EquipmentSlot.FEET) {
-            return new Identifier(Quantum.MOD_ID, this.texture_feet);
+            return new Identifier(QuantumAdds.MOD_ID, this.texture_feet);
         } else {
-            return new Identifier(Quantum.MOD_ID, this.texture_rest);
+            return new Identifier(QuantumAdds.MOD_ID, this.texture_rest);
         }
     }
 

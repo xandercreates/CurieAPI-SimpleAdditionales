@@ -5,11 +5,11 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import net.timeworndevs.quantumadds.Quantum;
+import net.timeworndevs.quantumadds.QuantumAdds;
 import net.timeworndevs.quantumadds.entities.custom.MonstrosityEntity;
 
 public class MonstrocityRenderer extends MobEntityRenderer<MonstrosityEntity, GooberModel<MonstrosityEntity>> {
-    private static final Identifier TEXTURE = new Identifier(Quantum.MOD_ID, "textures/entity/monstrocity_by_toast.png");
+    private static final Identifier TEXTURE = new Identifier(QuantumAdds.MOD_ID, "textures/entity/monstrocity_by_toast.png");
 
     public MonstrocityRenderer(EntityRendererFactory.Context context) {
 

@@ -20,14 +20,14 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.timeworndevs.quantumadds.Quantum"
+          "net.timeworndevs.quantumadds.QuantumAdds"
 		],
 		"fabric-datagen": [
 			"net.timeworndevs.quantumadds.QuantumDataGenerator"
 		],
 		"client": [
 			{
-				"value": "net.timeworndevs.quantumadds.QuantumClient"
+				"value": "net.timeworndevs.quantumadds.QuantumAddsClient"
 			}
 		],
 		"terrablender": [
@@ -38,6 +38,7 @@
 		"quantumadds.mixins.json"
 	],
 	"depends": {
+		"quantum": "1.0.0",
 		"fabricloader": ">=0.15.11",
 		"minecraft": "~1.20.1",
 		"java": ">=17",

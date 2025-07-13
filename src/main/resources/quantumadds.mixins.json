@@ -2,9 +2,7 @@
 	"required": true,
 	"package": "net.timeworndevs.quantumadds.mixin",
 	"compatibilityLevel": "JAVA_17",
-	"mixins": [
-		"ModEntityDataSaverMixin"
-	],
+	"mixins": [],
 	"injectors": {
 		"defaultRequire": 1
 	},
