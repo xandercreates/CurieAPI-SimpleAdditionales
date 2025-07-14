@@ -36,6 +36,36 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick {
     private final Map<List<Double>, Action> actions = Map.ofEntries(
             //([min_alpha, min_beta, min_gamma, min_neutron] -> effect
 
+
+            // MIXED RADIATION
+            entry(List.of(.9,.9,.8,.8),(player,rad) ->  {
+                addMutation(player);
+            }),
+            entry(List.of(.8,.5,.3,.1),(player,rad) ->  {
+                double r = Math.random();
+                if (r>0.6) {
+                    player.addStatusEffect(new StatusEffectInstance(ModEffects.SKINFALLOFF, 40, 1));
+                } else if (r>0.2) {
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 1200, 2));
+                } else if (r<0.05) {
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 20, 1));
+                }
+            }),
+            entry(List.of(.5,.5,.5,.5),(player,rad) ->  {
+                double r = Math.random();
+                if (r>0.5) {
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 120, 4));
+                } else if (r<0.4) {
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 120, 2));
+                }
+            }),
+            entry(List.of(.1,.1,.1,.1),(player,rad) ->  {
+                if (Math.random()>0.65) {
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 60, 1));
+                }
+            }),
+
+
             // ALPHA RADIATION
             entry(List.of(.9,.0,.0,.0),(player,rad) ->  {
                 if (Math.random()<0.15) {
@@ -50,21 +80,21 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick {
             entry(List.of(.5,.0,.0,.0),(player,rad) ->  {
                 double r = Math.random();
                 if (r>0.5) {
-                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 120, 2));   // 50% * 80%
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 120, 2));
                 } else if (r<0.25) {
-                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 120, 2));     // 25% * 80%
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 120, 2));
                 }
             }),
             entry(List.of(.1,.0,.0,.0),(player,rad) ->  {
                 if (Math.random()>0.9) {
-                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 60, 1));        // 25%
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 60, 1));
                 }
             }),
 
             // BETA RADIATION
             entry(List.of(.0,.9,.0,.0),(player,rad) ->  {
                 double r = Math.random();
-                if (r>0.8) {
+                if (r>0.95) {
                     addMutation(player);
                 } else if (r>0.5) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 20, 6));
@@ -122,33 +152,9 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick {
                 if (Math.random()>0.8) {
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 60, 1));
                 }
-            }),
-
-            // MIXED RADIATION
-            entry(List.of(.9,.9,.8,.7),(player,rad) ->  {
-                addMutation(player);
-            }),
-            entry(List.of(.8,.5,.3,.1),(player,rad) ->  {
-                double r = Math.random();
-                if (r>0.6) {
-                    player.addStatusEffect(new StatusEffectInstance(ModEffects.SKINFALLOFF, 40, 1));
-                } else if (r>0.2) {
-                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 1200, 2));
-                }
-            }),
-            entry(List.of(.5,.5,.5,.5),(player,rad) ->  {
-                double r = Math.random();
-                if (r>0.5) {
-                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 120, 2));
-                } else if (r<0.4) {
-                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 120, 2));
-                }
-            }),
-            entry(List.of(.1,.1,.1,.1),(player,rad) ->  {
-                if (Math.random()>0.65) {
-                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 60, 1));
-                }
             })
+
+
     );
 
     @Override
