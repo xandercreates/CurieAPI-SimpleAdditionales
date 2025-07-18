@@ -1,8 +1,9 @@
-package net.timeworndevs.quantumadds.mixin;
+package net.timeworndevs.curiecontent.mixin;
 
 import net.minecraft.entity.Entity;
-import net.timeworndevs.quantumadds.Quantum;
-import net.timeworndevs.quantumadds.util.IEntityDataSaver;
+import net.timeworndevs.curieapi.radiation.RadiationNBT;
+import net.timeworndevs.curieapi.util.CurieAPIConfig;
+import net.timeworndevs.curieapi.util.IEntityDataSaver;
 import org.figuramc.figura.lua.LuaWhitelist;
 import org.figuramc.figura.lua.api.entity.EntityAPI;
 import org.figuramc.figura.lua.docs.LuaMethodDoc;
@@ -24,8 +25,8 @@ public class EntityAPIMixin {
     public LuaTable getRadiation() {
         LuaTable table = new LuaTable();
         // why?? why?? why...
-        for (String key: Quantum.new_radiation_types.keySet()) {
-            table.set(key, ((IEntityDataSaver) entity).getPersistentData().getInt("radiation."+key));
+        for (String key: CurieAPIConfig.RADIATION_TYPES.keySet()) {
+            table.set(key, RadiationNBT.get((IEntityDataSaver) entity, key));
         }
         return table;
     }

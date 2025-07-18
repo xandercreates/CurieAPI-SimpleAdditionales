@@ -1,6 +1,5 @@
-package net.timeworndevs.quantumadds;
+package net.timeworndevs.curiecontent;
 
-import net.fabricmc.loader.api.FabricLoader;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -8,7 +7,9 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 import java.util.List;
 import java.util.Set;
 
-public class QuantumMixinPlugin implements IMixinConfigPlugin {
+import static net.timeworndevs.curiecontent.CurieContentClient.isFiguraLoaded;
+
+public class CurieContentMixinPlugin implements IMixinConfigPlugin {
     @Override
     public void onLoad(String mixinPackage) {
 
@@ -21,7 +22,7 @@ public class QuantumMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        return !targetClassName.startsWith("org.figuramc") || FabricLoader.getInstance().isModLoaded("figura");
+        return !targetClassName.startsWith("org.figuramc") || isFiguraLoaded;
     }
 
     @Override
