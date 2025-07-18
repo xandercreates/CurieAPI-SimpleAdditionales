@@ -27,7 +27,6 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
-	mavenLocal()
 	maven { name = "Figura Maven"; description = "Figura"; url = "https://maven.figuramc.org/releases" }
 	maven { url = "https://maven.minecraftforge.net/" }
 	maven { url 'https://jitpack.io' }
@@ -42,7 +41,7 @@ dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	modImplementation "net.timeworndevs.curie:curie-api:1.0.0"
+	modImplementation "maven.modrinth:curieapi:1.0.0"
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation "com.github.glitchfiend:TerraBlender-fabric:${project.minecraft_version}-${project.terrablender_version}"
