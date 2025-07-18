@@ -17,7 +17,7 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
 
     // This will modify the arguments before passing them to the original method
     @ModifyArgs(method = "render(Lnet/minecraft/entity/LivingEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/model/EntityModel;render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;IIFFFF)V"))
-    public void modifyRenderArgs(Args args, @Local(ordinal = 0) LivingEntity livingEntity) {
+    public void modifyRenderArgs(Args args, @Local(ordinal = 0, argsOnly = true) LivingEntity livingEntity) {
         if (livingEntity instanceof PlayerEntity player) {
             if(((IEntityDataSaver) player).getPersistentData().getBoolean("radiation.tinted")) {
                 args.set(4, 0.2f);

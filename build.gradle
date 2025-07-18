@@ -36,6 +36,7 @@ dependencies {
 	modImplementation "com.github.glitchfiend:TerraBlender-fabric:${project.minecraft_version}-${project.terrablender_version}"
 
 	modCompileOnly("org.figuramc:figura-fabric:0.1.4+1.20.1")
+	compileOnly("com.github.FiguraMC.luaj:luaj-core:3.0.8-figura")
 	// Uncomment the following line to enable the deprecated Fabric API modules.
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
 

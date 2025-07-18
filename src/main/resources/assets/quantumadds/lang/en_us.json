@@ -42,5 +42,7 @@
   "item.quantumadds.tungsten_ingot": "Tungsten Ingot",
   "item.quantumadds.rubber": "Rubber",
   "item.quantumadds.pvc": "PVC",
-  "death.attack.wither": "%s was disintegrated on nuclear level."
+  "death.attack.wither": "%s was disintegrated on nuclear level.",
+
+  "figura.docs.curie.player.getRadiation": "Returns the player's current radiation levels\nThe returned table has a key for each defined radiation type, with the value being their current level\nThis method is only safe when called on the server"
 }
