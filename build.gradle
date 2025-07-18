@@ -42,7 +42,7 @@ dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	modImplementation "net.timeworndevs:quantum:1.0.0"
+	modImplementation "net.timeworndevs.curie:curie-api:1.0.0"
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation "com.github.glitchfiend:TerraBlender-fabric:${project.minecraft_version}-${project.terrablender_version}"
@@ -131,20 +131,19 @@ loom {
 			name "Data Generation"
 			vmArg "-Dfabric-api.datagen"
 			vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
-			vmArg "-Dfabric-api.datagen.modid=quantumadds"
+			vmArg "-Dfabric-api.datagen.modid=${modid}"
 
 			runDir "build/datagen"
 		}
 	}
-
 }
 
-//sourceSets {
-//	main {
-//		resources {
-//			srcDirs += [
-//					'src/main/generated'
-//			]
-//		}
-//	}
-//}
+sourceSets {
+	main {
+		resources {
+			srcDirs += [
+					'src/main/generated'
+			]
+		}
+	}
+}
