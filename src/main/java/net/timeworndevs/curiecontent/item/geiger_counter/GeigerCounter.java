@@ -7,9 +7,9 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import net.timeworndevs.curieapi.radiation.RadiationEntry;
 import net.timeworndevs.curieapi.util.CurieAPIConfig;
 import net.timeworndevs.curieapi.util.PlayerCache;
-
 
 public class GeigerCounter extends Item {
 
@@ -34,18 +34,17 @@ public class GeigerCounter extends Item {
                 }
             }
         }
-
     }
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
-
         ItemStack geigerCounter = player.getStackInHand(hand);
         ItemStack itemStack = hand.equals(Hand.MAIN_HAND) ? player.getOffHandStack() : player.getMainHandStack();
         if (!itemStack.isEmpty()) {
             Item item = itemStack.getItem();
-            if (CurieAPIConfig.ITEM_RADIATION_VALUES.containsKey(item)) {
-                float radiation = CurieAPIConfig.ITEM_RADIATION_VALUES.get(item).addAllTypes();
+            RadiationEntry entry = CurieAPIConfig.ITEM_RADIATION_VALUES.get(item);
+            if (entry != null) {
+                float radiation = entry.addAllTypes();
                 updateNBT(world, player.getStackInHand(hand), radiation, RadiationReading.ITEM);
                 tick = 100;
             }

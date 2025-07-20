@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.render.RenderLayer;
 import net.timeworndevs.curieapi.radiation.RadiationType;
+import net.timeworndevs.curiecontent.effect.TintedPacket;
 import net.timeworndevs.curiecontent.registries.CurieContentModelLayers;
 import net.timeworndevs.curiecontent.registries.CurieContentEntities;
 import net.timeworndevs.curiecontent.entities.client.MonstrosityRenderer;
@@ -21,6 +22,7 @@ import net.timeworndevs.curiecontent.render.*;
 public class CurieContentClient implements ClientModInitializer {
 
     public static boolean isFiguraLoaded = false;
+    TintedPacket tintedPacket = new TintedPacket();
     @Override
     public void onInitializeClient() {
         CurieContentModelLayers.registerModelLayers();
@@ -32,6 +34,7 @@ public class CurieContentClient implements ClientModInitializer {
 
         BuiltinItemRendererRegistry.INSTANCE.register(CurieContentItems.GEIGER_COUNTER, new GeigerCounterItemRenderer());
         RadiationType.RadiationPacket.registerPackets();
+        tintedPacket.register();
 
         isFiguraLoaded = (FabricLoader.getInstance().isModLoaded("figura"));
     }
