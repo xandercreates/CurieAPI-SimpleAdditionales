@@ -28,7 +28,7 @@ public class RadiationNeutralisation extends StatusEffect {
         if (!entity.getWorld().isClient()) {
             if (entity instanceof PlayerEntity player) {
                 for (RadiationType type : RADIATION_TYPES.values()) {
-                    RadiationData.delRad(player, type, random.nextInt(25) * amplifier);
+                    RadiationData.delRad(player, type, random.nextInt(25) * (amplifier + 1));
                 }
             }
         }
