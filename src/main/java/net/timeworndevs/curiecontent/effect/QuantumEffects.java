@@ -11,6 +11,7 @@ public class QuantumEffects {
     public static StatusEffect SKIN_FALLOFF;
     public static StatusEffect EXPOSED_ORGANS;
     public static StatusEffect RADIATION_NEUTRALISATION;
+    public static StatusEffect DEGENERATION;
 
     public static StatusEffect registerEffect(String name, StatusEffect effect) {
         return Registry.register(Registries.STATUS_EFFECT, new Identifier(CurieContent.MOD_ID, name), effect);
@@ -20,5 +21,6 @@ public class QuantumEffects {
         SKIN_FALLOFF = registerEffect("skin_falloff", new SkinFalloffEffect(StatusEffectCategory.HARMFUL, 5245231));
         EXPOSED_ORGANS =  registerEffect("exposed_organs", new ExposedOrgans(StatusEffectCategory.HARMFUL, 7633476));
         RADIATION_NEUTRALISATION = registerEffect("radiation_neutralisation", new RadiationNeutralisation(StatusEffectCategory.BENEFICIAL, 3245231));
+        DEGENERATION = registerEffect("degeneration", new Degeneration(StatusEffectCategory.HARMFUL, 5202021));
     }
 }
