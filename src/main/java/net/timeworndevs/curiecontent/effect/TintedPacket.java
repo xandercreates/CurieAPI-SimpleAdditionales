@@ -6,10 +6,11 @@ import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
+import net.minecraft.nbt.NbtString;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
-import net.timeworndevs.curieapi.radiation.RadiationNBT;
+import net.timeworndevs.curieapi.util.CurieNBT;
 import net.timeworndevs.curieapi.util.IEntityDataSaver;
 import net.timeworndevs.curiecontent.CurieContent;
 
@@ -31,7 +32,7 @@ public class TintedPacket {
                         PacketByteBuf buf, PacketSender responseSender) {
         boolean value = buf.readBoolean();
         if (client.player != null) {
-            RadiationNBT.get((IEntityDataSaver) client.player).putBoolean("tinted", value);
+            CurieNBT.getEffectList((IEntityDataSaver) client.player).add(NbtString.of("tinted"));
         }
     }
 }

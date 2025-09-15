@@ -35,10 +35,9 @@ public class CurieContent implements ModInitializer {
         CurieContentEntities.registerEntities();
 
         CurieContentItems.registerItems();
-
+        CurieRadiationEffects.registerRadiationEffects();
 
         LOGGER.info("Analyzing external dimensions...");
-
         ServerTickEvents.START_SERVER_TICK.register(new PlayerTickHandler());
 
         LOGGER.info("Testing radiation...");

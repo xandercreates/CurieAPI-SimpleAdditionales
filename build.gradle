@@ -18,10 +18,19 @@ repositories {
 				url = "https://api.modrinth.com/maven"
 			}
 		}
+
 		filter {
 			includeGroup "maven.modrinth"
 		}
 	}
+
+    maven {
+        url "https://maven.jamieswhiteshirt.com/libs-release"
+        content {
+            includeGroup "com.jamieswhiteshirt"
+        }
+    }
+
 	// Add repositories to retrieve artifacts from in here.
 	// You should only use this when depending on other mods because
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
@@ -42,6 +51,7 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "maven.modrinth:curieapi:1.0.0"
+    include modImplementation("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_attributes_version}")
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
