@@ -5,6 +5,7 @@ import net.minecraft.util.Identifier;
 import net.timeworndevs.curieapi.radiation.AbstractRadiationEntry;
 import net.timeworndevs.curieapi.radiation.RadiationEffect;
 import net.timeworndevs.curieapi.radiation.RadiationEntry;
+import net.timeworndevs.curiecontent.CurieContent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +31,14 @@ public class ExclusiveRadiationEffect<T extends AbstractRadiationEntry<?>> exten
 
     public void applyEffect(ServerPlayerEntity serverPlayerEntity, RadiationEntry types) {
         Set<Identifier> currentEffects = RadiationEffect.getCurrentEffects(serverPlayerEntity);
-
+        CurieContent.LOGGER.info(currentEffects.toString());
+        this.updateEffects(serverPlayerEntity);
         for (RadiationEffect<?> exclusion : exclusions) {
             if (currentEffects.contains(exclusion.getIdentifier())) {
                 return; // Don't apply anything if one of the mutually exclusive effects is found.
             }
         }
+
         this.consumer.accept(serverPlayerEntity, types);
     }
 

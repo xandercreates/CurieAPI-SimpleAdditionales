@@ -79,10 +79,10 @@ public class CurieRadiationEffects {
             new RangedRadiationEntry.Builder().add(ALPHA, 0.2f, 0.3f).add(BETA, 0.5f, 0.7f).add(GAMMA, 0.2f, 0.3f).add(NEUTRON, 0.0f, 0.1f).build(),
             (player, list) -> player.setStepHeight(0.2f)));
 
-    public static final RadiationEffect<RangedRadiationEntry> JUMP_POWER = register(new ExclusiveRadiationEffect<>(
+    public static final ExclusiveRadiationEffect<RangedRadiationEntry> JUMP_POWER = register(new ExclusiveRadiationEffect<>(
             Identifier.of(CurieContent.MOD_ID, "jump_power"),
             new RangedRadiationEntry.Builder().add(ALPHA, 0.2f, 0.3f).add(BETA, 0.5f, 0.7f).add(GAMMA, 0.2f, 0.3f).add(NEUTRON, 0.0f, 0.1f).build(),
-            (player, list) -> player.jump())); // Oh this is so temp I swear
+            (player, list) -> {})); // Oh this is so temp I swear
 
     public static void registerRadiationEffects() {
 
