@@ -8,6 +8,7 @@ import net.timeworndevs.curieapi.radiation.RadiationType;
 import net.timeworndevs.curieapi.util.CurieAPIConfig;
 import net.timeworndevs.curieapi.util.CurieNBT;
 import net.timeworndevs.curieapi.util.IEntityDataSaver;
+import net.timeworndevs.curiecontent.CurieContent;
 import net.timeworndevs.curiecontent.registries.CurieRadiationEffects;
 
 import static net.timeworndevs.curieapi.util.CurieAPIConfig.RADIATION_TYPES;
@@ -27,6 +28,7 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick {
                     float currentValue = (float) CurieNBT.getRadiation((IEntityDataSaver) player, type.getName()) / CurieAPIConfig.CAP;
                     rad.getEntry().put(type, currentValue);
                 }
+                CurieContent.LOGGER.info(String.valueOf(CurieNBT.get((IEntityDataSaver) player, CurieNBT.CurieNBTType.EFFECT).getNbtType()));
                 CurieRadiationEffects.JUMP_POWER.applyEffect(player, rad);
 //                for (RadiationEffect effect : RadiationLimitEffectList.actions) {
 //                    effect.applyEffect(player, rad);
