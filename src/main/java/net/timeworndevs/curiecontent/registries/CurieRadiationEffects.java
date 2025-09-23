@@ -3,13 +3,18 @@ package net.timeworndevs.curiecontent.registries;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 import net.timeworndevs.curieapi.radiation.RadiationEntry;
+import net.timeworndevs.curieapi.radiation.RadiationNBT;
 import net.timeworndevs.curieapi.radiation.RadiationType;
 import net.timeworndevs.curieapi.util.CurieAPIConfig;
+import net.timeworndevs.curieapi.util.IEntityDataSaver;
+
 import java.util.*;
 import scala.runtime.BoxedUnit;
 import static scala.jdk.javaapi.CollectionConverters.asScala;
 
 import org.eu.net.pool.mutationkit.*;
+
+import static net.timeworndevs.curieapi.util.CurieAPIConfig.RADIATION_TYPES;
 import static net.timeworndevs.curiecontent.registries.CurieContentRadiationTypes.*;
 
 @SuppressWarnings("unchecked")
@@ -47,8 +52,12 @@ public class CurieRadiationEffects {
 
     static {
         var manager = new EffectManager<ServerPlayerEntity, RadiationEntry>(p -> {
-            // TODO(ItsToastCraft): implement this
-            return null;
+            RadiationEntry rad = RadiationEntry.createEmpty();
+            for (RadiationType type : RADIATION_TYPES.values()) {
+                float currentValue = (float) RadiationNBT.get((IEntityDataSaver) player, type.getName()) / CurieAPIConfig.CAP;
+                rad.put(type, currentValue);
+            }
+            return rad;
         });
         system = manager.new System(
             asScala((Iterable) List.of(
