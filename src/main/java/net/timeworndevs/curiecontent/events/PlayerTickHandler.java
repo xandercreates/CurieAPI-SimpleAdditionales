@@ -21,18 +21,7 @@ public class PlayerTickHandler implements ServerTickEvents.StartTick {
     public void onStartTick(MinecraftServer server) {
         if (tick >= 20) {
             for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
-
-
-                RadiationEntry rad = RadiationEntry.createEmpty();
-                for (RadiationType type : RADIATION_TYPES.values()) {
-                    float currentValue = (float) CurieNBT.getRadiation((IEntityDataSaver) player, type.getName()) / CurieAPIConfig.CAP;
-                    rad.getEntry().put(type, currentValue);
-                }
-                CurieContent.LOGGER.info(String.valueOf(CurieNBT.get((IEntityDataSaver) player, CurieNBT.CurieNBTType.EFFECT).getNbtType()));
-                CurieRadiationEffects.JUMP_POWER.applyEffect(player, rad);
-//                for (RadiationEffect effect : RadiationLimitEffectList.actions) {
-//                    effect.applyEffect(player, rad);
-//                }
+                CurieRadiationEffects.system.apply(player);
             }
             tick = 0;
         }

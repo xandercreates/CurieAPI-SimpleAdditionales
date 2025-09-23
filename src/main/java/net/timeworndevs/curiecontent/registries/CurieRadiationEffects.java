@@ -1,22 +1,11 @@
 package net.timeworndevs.curiecontent.registries;
 
-import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
-import net.minecraft.entity.attribute.EntityAttribute;
-import net.minecraft.entity.attribute.EntityAttributeInstance;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
-import net.timeworndevs.curieapi.radiation.RadiationEffect;
 import net.timeworndevs.curieapi.radiation.RadiationEntry;
-import net.timeworndevs.curieapi.radiation.RadiationNBT;
 import net.timeworndevs.curieapi.radiation.RadiationType;
-import net.timeworndevs.curieapi.util.IEntityDataSaver;
-import net.timeworndevs.curiecontent.CurieContent;
-
+import net.timeworndevs.curieapi.util.CurieAPIConfig;
 import java.util.*;
-import scala.collection.immutable.Vector;
 import scala.runtime.BoxedUnit;
 import static scala.jdk.javaapi.CollectionConverters.asScala;
 
@@ -43,7 +32,7 @@ public class CurieRadiationEffects {
         public Boolean apply(Object v1) {
             var ent = (RadiationEntry) v1;
             for (var pair: queries.entrySet()) {
-                float x = ent.get(pair.getKey());
+                float x = ent.get(pair.getKey()) / CurieAPIConfig.CAP;
                 Range r = pair.getValue();
                 if (x < r.min || x > r.max) return false;
             }
