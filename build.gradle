@@ -39,7 +39,28 @@ repositories {
 	// for more information about repositories.
 	maven { name = "Figura Maven"; description = "Figura"; url = "https://maven.figuramc.org/releases" }
 	maven { url = "https://maven.minecraftforge.net/" }
-	maven { url 'https://jitpack.io' }
+	exclusiveContent {
+		forRepository {
+			maven { url 'https://jitpack.io' }
+		}
+		filter {
+			includeGroup 'com.github'
+		}
+	}
+
+	maven { url "https://maven.krysztal.dev/releases" }
+	maven { url "https://maven.ladysnake.org/releases/" }
+
+	exclusiveContent {
+		forRepository {
+			maven {
+				url "https://maven.pool.net.eu.org"
+			}
+		}
+		filter {
+			includeGroup("org.eu.net.pool")
+		}
+	}
 }
 
 fabricApi {
@@ -54,6 +75,7 @@ dependencies {
 	modImplementation "net.timeworndevs.curie:CurieAPI:1.0.0"
 	//modImplementation "maven.modrinth:curieapi:1.0.0"
     include modImplementation("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_attributes_version}")
+	include modApi("org.eu.net.pool:mutationkit:0.1.0-SNAPSHOT")
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
