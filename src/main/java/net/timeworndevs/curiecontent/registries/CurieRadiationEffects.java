@@ -1,5 +1,6 @@
 package net.timeworndevs.curiecontent.registries;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 import net.timeworndevs.curieapi.radiation.RadiationEntry;
@@ -7,6 +8,7 @@ import net.timeworndevs.curieapi.radiation.RadiationNBT;
 import net.timeworndevs.curieapi.radiation.RadiationType;
 import net.timeworndevs.curieapi.util.CurieAPIConfig;
 import net.timeworndevs.curieapi.util.IEntityDataSaver;
+import net.timeworndevs.curiecontent.CurieContent;
 
 import java.util.*;
 import scala.runtime.BoxedUnit;
@@ -21,7 +23,11 @@ import static net.timeworndevs.curiecontent.registries.CurieContentRadiationType
 public class CurieRadiationEffects {
     public static final EffectManager<ServerPlayerEntity, RadiationEntry>.System system;
     static class RadiationRange implements scala.Function1 {
-        static record Range(double min, double max) {}
+        static record Range(double min, double max) {
+            public String toString() {
+                return min + ".." + max;
+            }
+        }
         private HashMap<RadiationType, Range> queries = new HashMap();
 
         public RadiationRange put(RadiationType name, double min, double max) {
@@ -37,9 +43,11 @@ public class CurieRadiationEffects {
         public Boolean apply(Object v1) {
             var ent = ((RadiationEntry) v1).getEntry();
             for (var pair: queries.entrySet()) {
-                float x = ent.get(pair.getKey()) / CurieAPIConfig.CAP;
+                float x = ent.get(pair.getKey());
                 Range r = pair.getValue();
-                if (x < r.min || x > r.max) return false;
+                if (x < r.min || x > r.max) {
+                    return false;
+                }
             }
             return true;
         }
@@ -50,6 +58,8 @@ public class CurieRadiationEffects {
         return new RadiationRange();
     }
 
+    private static boolean DEV = FabricLoader.getInstance().isDevelopmentEnvironment();
+
     static {
         var manager = new EffectManager<ServerPlayerEntity, RadiationEntry>(p -> {
             RadiationEntry rad = RadiationEntry.createEmpty();
@@ -58,6 +68,12 @@ public class CurieRadiationEffects {
                 float currentValue = (float) RadiationNBT.get((IEntityDataSaver) p, type.getName()) / CurieAPIConfig.CAP;
                 map.put(type, currentValue);
             }
+            // Uncomment to test mutations only, not radiation
+            // map.put(CurieContentRadiationTypes.ALPHA, 0.55f);
+            // map.put(CurieContentRadiationTypes.BETA, 0.25f);
+            // map.put(CurieContentRadiationTypes.GAMMA, 0.35f);
+            // map.put(CurieContentRadiationTypes.NEUTRON, 0.0f);
+            if (DEV) CurieContent.LOGGER.debug("Radiation for player %s: %s".formatted(p.getName(), map));
             return rad;
         });
         system = manager.new System(
