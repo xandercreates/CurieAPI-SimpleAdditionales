@@ -35,7 +35,7 @@ public class CurieRadiationEffects {
 
         @Override
         public Boolean apply(Object v1) {
-            var ent = (RadiationEntry) v1;
+            var ent = ((RadiationEntry) v1).getEntry();
             for (var pair: queries.entrySet()) {
                 float x = ent.get(pair.getKey()) / CurieAPIConfig.CAP;
                 Range r = pair.getValue();
@@ -53,34 +53,35 @@ public class CurieRadiationEffects {
     static {
         var manager = new EffectManager<ServerPlayerEntity, RadiationEntry>(p -> {
             RadiationEntry rad = RadiationEntry.createEmpty();
+            var map = rad.getEntry();
             for (RadiationType type : RADIATION_TYPES.values()) {
-                float currentValue = (float) RadiationNBT.get((IEntityDataSaver) player, type.getName()) / CurieAPIConfig.CAP;
-                rad.put(type, currentValue);
+                float currentValue = (float) RadiationNBT.get((IEntityDataSaver) p, type.getName()) / CurieAPIConfig.CAP;
+                map.put(type, currentValue);
             }
             return rad;
         });
         system = manager.new System(
             asScala((Iterable) List.of(
-                manager.new Row(MaxHealth$.MODULE$, rg().a(0.5, 0.6).b(0.2, 0.3).g(0.3, 0.4), p -> 2.0),
-                manager.new Row(Armor$.MODULE$, r -> rg().a(0.5, 0.6).b(0.4, 0.5).g(0.1, 0.2), p -> 2.0),
-                manager.new Row(AttackPower$.MODULE$, rg().a(0.0, 0.1).b(0.3, 0.4).n(0.3, 0.4), p -> 2.0),
-                manager.new Row(AttackSpeed$.MODULE$, rg().a(0.0, 0.1).b(0.3, 0.4).g(0.3, 0.4), p -> 2.0),
-                manager.new Row(KnockbackResistance$.MODULE$, rg().a(0.3, 0.4).b(0.0, 0.1).n(0.5, 0.6), p -> 2.0),
-                manager.new Row(MovementSpeed$.MODULE$, rg().a(0.2, 0.3).b(0.5, 0.6).g(0.2, 0.3).n(0.0, 0.1), p -> 2.0),
-                manager.new Row(Reach$.MODULE$, rg().a(0.0, 0.1).b(0.8, 0.9), p -> 2.0),
-                manager.new Row(StepHeight$.MODULE$, rg().a(0.0, 0.1).g(0.8, 0.9), p -> 2.0),
-                manager.new Row(JumpPower$.MODULE$, rg().a(0.1, 0.2).b(.5,.6).g(.1,.2).n(.1,.2), p -> 2.0),
+                manager.new Row<>(MaxHealth$.MODULE$, rg().a(0.5, 0.6).b(0.2, 0.3).g(0.3, 0.4), p -> 2.0),
+                manager.new Row<>(Armor$.MODULE$, rg().a(0.5, 0.6).b(0.4, 0.5).g(0.1, 0.2), p -> 2.0),
+                manager.new Row<>(AttackPower$.MODULE$, rg().a(0.0, 0.1).b(0.3, 0.4).n(0.3, 0.4), p -> 2.0),
+                manager.new Row<>(AttackSpeed$.MODULE$, rg().a(0.0, 0.1).b(0.3, 0.4).g(0.3, 0.4), p -> 2.0),
+                manager.new Row<>(KnockbackResistance$.MODULE$, rg().a(0.3, 0.4).b(0.0, 0.1).n(0.5, 0.6), p -> 2.0),
+                manager.new Row<>(MovementSpeed$.MODULE$, rg().a(0.2, 0.3).b(0.5, 0.6).g(0.2, 0.3).n(0.0, 0.1), p -> 2.0),
+                manager.new Row<>(Reach$.MODULE$, rg().a(0.0, 0.1).b(0.8, 0.9), p -> 2.0),
+                manager.new Row<>(StepHeight$.MODULE$, rg().a(0.0, 0.1).g(0.8, 0.9), p -> 2.0),
+                manager.new Row<>(JumpPower$.MODULE$, rg().a(0.1, 0.2).b(.5,.6).g(.1,.2).n(.1,.2), p -> 2.0),
                 // TODO: Gravity
                 // TODO: Swim Speed
-                manager.new Row(Spiderlike$.MODULE$, rg().g(.5,.6).n(.2,.3), p -> BoxedUnit.UNIT),
-                manager.new Row(Volatile$.MODULE$, rg().a(.8,.9).b(.0,.1).g(.0,.1).n(.6,.7), p -> BoxedUnit.UNIT),
-                manager.new Row(Frictionless$.MODULE$, rg().a(.3,.4).b(.5,.7).g(.2,.3).n(.0,.1), p -> BoxedUnit.UNIT),
-                manager.new Row(Breathless$.MODULE$, rg().a(.0,.1).b(.9,1).g(.4,.5), p -> BoxedUnit.UNIT),
-                manager.new Row(Glowing$.MODULE$, rg().a(.5,1).g(.5,1), p -> BoxedUnit.UNIT),
-                manager.new Row(VisionAnomaly$.MODULE$, rg().b(.2,1).g(.5,.6).n(.2,.3), p -> Identifier.of("minecraft", "spider")),
-                manager.new Row(Conductive$.MODULE$, rg().a(.9,1).b(.1,.2).g(0,.1).n(.6,.7), p -> BoxedUnit.UNIT),
-                manager.new Row(LightSensitive$.MODULE$, rg().a(.4,1).b(.2,1).g(.5,.6).n(.3,.4), p -> BoxedUnit.UNIT),
-                manager.new Row(Schizo$.MODULE$, rg().a(.4,1).b(.2,1).g(.5,.6).n(.2,.3), p -> BoxedUnit.UNIT)
+                manager.new Row<>(Spiderlike$.MODULE$, rg().g(.5,.6).n(.2,.3), p -> BoxedUnit.UNIT),
+                manager.new Row<>(Volatile$.MODULE$, rg().a(.8,.9).b(.0,.1).g(.0,.1).n(.6,.7), p -> BoxedUnit.UNIT),
+                manager.new Row<>(Frictionless$.MODULE$, rg().a(.3,.4).b(.5,.7).g(.2,.3).n(.0,.1), p -> BoxedUnit.UNIT),
+                manager.new Row<>(Breathless$.MODULE$, rg().a(.0,.1).b(.9,1).g(.4,.5), p -> BoxedUnit.UNIT),
+                manager.new Row<>(Glowing$.MODULE$, rg().a(.5,1).g(.5,1), p -> BoxedUnit.UNIT),
+                manager.new Row<>(VisionAnomaly$.MODULE$, rg().b(.2,1).g(.5,.6).n(.2,.3), p -> Identifier.of("minecraft", "spider")),
+                manager.new Row<>(Conductive$.MODULE$, rg().a(.9,1).b(.1,.2).g(0,.1).n(.6,.7), p -> BoxedUnit.UNIT),
+                manager.new Row<>(LightSensitive$.MODULE$, rg().a(.4,1).b(.2,1).g(.5,.6).n(.3,.4), p -> BoxedUnit.UNIT),
+                manager.new Row<>(Schizo$.MODULE$, rg().a(.4,1).b(.2,1).g(.5,.6).n(.2,.3), p -> BoxedUnit.UNIT)
             )).toSeq()
         );
     }

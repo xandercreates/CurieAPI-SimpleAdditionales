@@ -26,16 +26,4 @@ public class LivingEntityMixin {
             }
         }
     }
-
-    @Inject(method="getJumpVelocity", at=@At(value="TAIL"), cancellable = true)
-    protected void getJumpVelocity(CallbackInfoReturnable<Float> cir) {
-        if ((LivingEntity) (Object) this instanceof PlayerEntity player) {
-            NbtList list = CurieNBT.getEffectList((IEntityDataSaver) player);
-            CurieContent.LOGGER.info(list.toString());
-            if (list.contains(NbtString.of(CurieRadiationEffects.JUMP_POWER.getIdentifier().toString()))) {
-                CurieContent.LOGGER.info("WOAH");
-                cir.setReturnValue(cir.getReturnValue() + 28.0f);
-            }
-        }
-    }
 }

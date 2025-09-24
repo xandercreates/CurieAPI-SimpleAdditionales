@@ -67,6 +67,10 @@ fabricApi {
 	configureDataGeneration()
 }
 
+tasks.withType(JavaCompile) {
+	dependsOn(gradle.includedBuild("CurieAPI").task(":build"))
+}
+
 dependencies {
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
