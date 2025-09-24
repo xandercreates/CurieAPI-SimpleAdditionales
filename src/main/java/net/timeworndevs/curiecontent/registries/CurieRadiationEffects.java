@@ -4,9 +4,9 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 import net.timeworndevs.curieapi.radiation.RadiationEntry;
-import net.timeworndevs.curieapi.radiation.RadiationNBT;
 import net.timeworndevs.curieapi.radiation.RadiationType;
 import net.timeworndevs.curieapi.util.CurieAPIConfig;
+import net.timeworndevs.curieapi.util.CurieNBT;
 import net.timeworndevs.curieapi.util.IEntityDataSaver;
 import net.timeworndevs.curiecontent.CurieContent;
 
@@ -65,7 +65,7 @@ public class CurieRadiationEffects {
             RadiationEntry rad = RadiationEntry.createEmpty();
             var map = rad.getEntry();
             for (RadiationType type : RADIATION_TYPES.values()) {
-                float currentValue = (float) RadiationNBT.get((IEntityDataSaver) p, type.getName()) / CurieAPIConfig.CAP;
+                float currentValue = (float) CurieNBT.getRadiation((IEntityDataSaver) p, type.getName()) / CurieAPIConfig.CAP;
                 map.put(type, currentValue);
             }
             // Uncomment to test mutations only, not radiation
