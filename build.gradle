@@ -56,16 +56,7 @@ repositories {
 	maven { url "https://maven.krysztal.dev/releases" }
 	maven { url "https://maven.ladysnake.org/releases/" }
 
-	exclusiveContent {
-		forRepository {
-			maven {
-				url "https://maven.pool.net.eu.org"
-			}
-		}
-		filter {
-			includeGroup("org.eu.net.pool")
-		}
-	}
+	maven { url "https://maven.pool.net.eu.org" }
 }
 
 fabricApi {
