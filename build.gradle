@@ -67,8 +67,10 @@ fabricApi {
 	configureDataGeneration()
 }
 
-tasks.withType(JavaCompile) {
-	dependsOn(gradle.includedBuild("CurieAPI").task(":build"))
+if (System.getenv("CI") != null) {
+	tasks.withType(JavaCompile) {
+		dependsOn(gradle.includedBuild("CurieAPI").task(":build"))
+	}
 }
 
 dependencies {
