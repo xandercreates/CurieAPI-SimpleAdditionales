@@ -41,7 +41,12 @@ repositories {
 	maven { url = "https://maven.minecraftforge.net/" }
 	exclusiveContent {
 		forRepository {
-			maven { url 'https://jitpack.io' }
+			maven {
+				url 'https://jitpack.io'
+				content {
+					includeGroup 'com.github'
+				}
+			}
 		}
 		filter {
 			includeGroup 'com.github'
