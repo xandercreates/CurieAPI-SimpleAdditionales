@@ -10,6 +10,6 @@ pluginManagement {
 	}
 }
 rootProject.name = 'CurieContent'
-if (System.getenv("CI") != null) {
+try {
 	includeBuild("../CurieAPI")
-}
+} catch (any) {}
