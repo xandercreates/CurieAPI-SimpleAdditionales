@@ -36,7 +36,7 @@
 		"curie-content.mixins.json"
 	],
 	"depends": {
-		"curie-api": "1.0.0",
+		"curie-api": ">=1.1.0-SNAPSHOT <=2.0.0",
 		"fabricloader": ">=0.15.11",
 		"minecraft": "~1.20.1",
 		"java": ">=17",
