@@ -5,19 +5,18 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.timeworndevs.curiecontent.CurieContent;
-import net.timeworndevs.curiecontent.registries.CurieContentItems;
 
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
     HAZMATD("hazmatd", 5, new int[] {3, 5, 4, 2}, 5, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
             2f, 0.1f, () -> Ingredient.ofItems(Items.LEATHER)),
-    HAZMATC("hazmatc", 5, new int[] {4, 6, 5, 3}, 6, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN,
-            3f, 0.2f, () -> Ingredient.ofItems(CurieContentItems.RUBBER)),
-    HAZMATB("hazmatb", 5, new int[] {6, 8, 6, 5}, 8, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN,
-            4f, 0.4f, () -> Ingredient.ofItems(CurieContentItems.RUBBER)),
-    HAZMATA("hazmata", 5, new int[] {8, 10, 7, 6}, 12, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            6f, 0.8f, () -> Ingredient.ofItems(CurieContentItems.PVC));
+    HAZMATC("hazmatc", 7, new int[] {4, 6, 5, 3}, 6, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN,
+            3f, 0.2f, () -> Ingredient.ofItems(Items.AMETHYST_SHARD)),
+    HAZMATB("hazmatb", 33, new int[] {6, 8, 6, 5}, 8, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN,
+            4f, 0.4f, () -> Ingredient.ofItems(Items.IRON_INGOT)),
+    HAZMATA("hazmata", 37, new int[] {8, 10, 7, 6}, 12, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
+            6f, 0.8f, () -> Ingredient.ofItems(Items.NETHERITE_SCRAP));
 
     private final String name;
     private final int durabilityMultiplier;
