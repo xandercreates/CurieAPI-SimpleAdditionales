@@ -74,7 +74,7 @@ dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	modImplementation "net.timeworndevs.curie:CurieAPI:1.0.0"
+	modImplementation "net.timeworndevs.curie:CurieAPI:1.1.0"
 	//modImplementation "maven.modrinth:curieapi:1.0.0"
     include modImplementation("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_attributes_version}")
 	include modApi("org.eu.net.pool:mutationkit:0.1.0-SNAPSHOT")
