@@ -17,6 +17,7 @@ repositories {
 				name = "Modrinth"
 				url = "https://api.modrinth.com/maven"
 			}
+
 		}
 
 		filter {
@@ -30,6 +31,14 @@ repositories {
             includeGroup "com.jamieswhiteshirt"
         }
     }
+
+	maven {
+		name = "PoolloverNathan"
+		url = 'https://maven.pool.net.eu.org'
+		content {
+			includeGroup "net.timeworndeves.curie"
+		}
+	}
 
 	// Add repositories to retrieve artifacts from in here.
 	// You should only use this when depending on other mods because
@@ -50,7 +59,7 @@ dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	modImplementation "maven.modrinth:curieapi:1.0.0"
+	modImplementation "net.timeworndevs.curie:curieapi:1.1.0"
     include modImplementation("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_attributes_version}")
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
